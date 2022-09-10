@@ -1,0 +1,72 @@
+{
+  "breakfast":[
+    {
+      "product": "Café Americano",
+      "price": 5
+    },
+    {
+      "product": "Café con Leche",
+      "price": 7
+    },
+    {
+      "product": "Sandwich de jamón y queso",
+      "price": 10
+    },
+    {
+      "product": "Jugo de Fruta Natural",
+      "price": 7
+    }
+  ],
+ "lunchAndDinner": [{
+    "hamburgers": {
+      "sizeSimple": {
+        "type": [
+          "Pollo",
+          "Res",
+          "Vegana"
+        ],
+        "price": 10
+      },
+      "sizeDouble": {
+        "type": [
+          "Pollo",
+          "Res",
+          "Vegana"
+        ],
+        "price": 15
+      },
+      "additional":{
+        "type": [
+          "Queso",
+          "Huevo"
+        ],
+        "price": 1
+      }
+    },
+    "apetizzer":{
+      "type": [
+        "Aros de Cebolla",
+        "Papas Fritas"
+      ],
+      "price": 5
+    },
+    "drinks": [
+      {
+        "product": "Agua 500ml",
+        "price": 5
+      },
+      {
+        "product": "Agua 750ml",
+        "price": 7
+      },
+      {
+        "product": "Bebida/gaseosa 500ml",
+        "price": 7
+      },
+      {
+        "product": "Bebida/gaseosa 750ml",
+        "price": 10
+      }
+    ]
+  }]
+}
