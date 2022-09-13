@@ -1,0 +1,42 @@
+/* font-family: 'Montserrat', sans-serif; */
+/* font-family: 'Slackey', cursive; */
+
+.contHeader , .contBtnsHeader {
+    display: flex;
+    gap: 1rem;
+}
+
+.contHeader {
+    justify-content: space-between;
+    padding: 0rem 1rem;
+    background: #FFEBBF;
+    border-radius: 0.5rem;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.25);
+    margin: 0.5rem;
+}
+
+.contBtnsHeader{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.contLogo > img {
+    height: 4rem;
+}
+.btn{
+    width: 10rem;
+    height: 2rem;
+    box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.25);
+    border-radius: 0.5rem;
+    border-style: none;
+    color: #fff;
+    font-size: small;
+    text-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    font-family: 'Slackey', cursive; 
+   
+}
+
+.btnWaiter{
+    background: #FFB307;
+}

@@ -1,3 +1,4 @@
+
 *{
     box-sizing: border-box;
     margin: 0;
@@ -6,13 +7,18 @@
 }
 /* font-family: 'Montserrat', sans-serif; */
 /* font-family: 'Slackey', cursive; */
+
+
 .contWelcome{
     display: flex;
-    height: 100vh;
+    height: 95vh;
     width: 100vw;
+    overflow-y: hidden;
     background-image: url("../img/hamburguesas.jpeg");
     background-repeat: repeat;
+    padding: 6.5rem;
 }
+
 
 .contButtons, .contImgQueen{
     
