@@ -1,5 +1,5 @@
 
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -10,8 +10,8 @@
 
 .contWelcome{
     display: flex;
-    height: 100vh;
     width: 100vw;
+    height: 80vh;
     overflow-y: hidden;
     padding: 6.5rem;
 }
@@ -49,6 +49,10 @@
     text-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
     cursor: pointer;
 }
+
+.btn:hover{
+    transform: scale(1.2,1.2);
+ }
 
 .btnWaiter{
     background: #FFB307;
