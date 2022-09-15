@@ -5,12 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { HeaderWaiterComponent } from './components/header-waiter/header-waiter.component';
+import { NameClientComponent } from './components/name-client/name-client.component';
+import { ViewWaiterOrderComponent } from './components/view-waiter-order/view-waiter-order.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
-    HeaderWaiterComponent
+    HeaderWaiterComponent,
+    NameClientComponent,
+    ViewWaiterOrderComponent
   ],
   imports: [
     BrowserModule,
