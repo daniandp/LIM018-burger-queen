@@ -1,4 +1,5 @@
-*{
+
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -6,25 +7,28 @@
 }
 /* font-family: 'Montserrat', sans-serif; */
 /* font-family: 'Slackey', cursive; */
+
 .contWelcome{
     display: flex;
-    height: 100vh;
     width: 100vw;
-    background-repeat: no-repeat;
-    background-image: url("https://raw.githubusercontent.com/daniandp/LIM018-burger-queen/develop/burges-queen/src/app/components/img/hamburguesas.jpeg");
+    height: 80vh;
+    overflow-y: hidden;
+    padding: 6.5rem;
 }
+
 .contButtons, .contImgQueen{
     width:50%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 100px;
+    gap: 6.25rem;
 }
 
 .contImgQueen{
     gap: 1rem;
 }
+
 .contImgQueen > h1 {
     font-size: 3rem;
     background: linear-gradient(180deg, #FFB307 0%, rgba(242, 128, 5, 0.931668) 50.35%, rgba(209, 0, 0, 0.76) 100%);
@@ -33,20 +37,27 @@
     background-clip: text;
     -webkit-text-stroke: 1px rgb(54, 47, 47);
 }
+
 .btn{
     width: 20rem;
     height: 8rem;
-    box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
-    border-radius: 1rem 0px;
+    box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.25);
+    border-radius: 1rem 0;
     border-style: none;
     color: #fff;
     font-size: x-large;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+    cursor: pointer;
 }
+
+.btn:hover{
+    transform: scale(1.2,1.2);
+ }
 
 .btnWaiter{
     background: #FFB307;
 }
+
 .btnChef{
     background: #00CED1;
 }
