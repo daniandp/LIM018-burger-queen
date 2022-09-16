@@ -1,0 +1,64 @@
+.contTicketOrder {
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    height: 29vh;
+    background: rgba(195, 169, 131, 0.8);
+    border-radius: 0.5rem;
+    justify-content: flex-start;
+}
+
+.contStatusOrder {
+    display: flex;
+    background-color: #BC0000;
+    height: 25%;
+    border-radius: 0.5rem 0.5rem 0 0;
+    font-family: "Slackey", cursive;
+    color: #fff;
+    font-size: xx-large;
+    align-items: center;
+    justify-content: center;
+}
+
+.contInfoClient {
+    display: flex;
+    background: rgba(255, 255, 255, 0.45);
+    width: 80%;
+    height: 13vh;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    margin: 3% auto;
+
+}
+
+.clientName {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: x-large;
+    text-align: center;
+}
+
+.contBtnOrder {
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+    height: 30%;
+    align-items: center;
+}
+
+.checkOrder, .deliveredOrder {
+    border: none;
+    border-radius: 0.5rem;
+    height: 100%;
+    width: 43%;
+    font-family: "Slackey", cursive;
+    color: #fff;
+    font-size: medium;
+    background-color: #FFB307;
+}
+
+.deliveredOrder {
+    background-color: #00CED1;
+}
