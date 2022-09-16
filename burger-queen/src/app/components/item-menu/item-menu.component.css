@@ -1,0 +1,50 @@
+.contItemMenu {
+    display: flex;
+    width: 100%;
+    height: 15%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.45);
+}
+.iconItemMenu, .contItemDescription, .contBtnAddItem {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.iconItemMenu {
+    width: 25%;
+}
+.imageItemMenu {
+    width: 65%;
+    height: auto;
+}
+
+.contItemDescription {
+    width: 45%;
+    align-items: flex-start;
+    padding-left: 3%;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+}
+
+.contBtnAddItem {
+    width: 30%;
+}
+
+.btnAddItem {    
+    background-color: #FFB307;
+    color: #fff;
+    display: flex;
+    height: 50%;
+    box-shadow: 0 0.5rem 0.5rem rgb(0 0 0 / 25%);
+    border-radius: 1rem;
+    border-style: none;
+    font-size: medium;
+    text-shadow: 0 0.25rem 0.25rem rgb(0 0 0 / 25%);
+    cursor: pointer;
+    font-family: "Slackey", cursive;
+    align-items: center;
+    justify-content: center;
+}
