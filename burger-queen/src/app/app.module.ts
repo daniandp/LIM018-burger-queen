@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { HeaderWaiterComponent } from './components/header-waiter/header-waiter.component';
 import { NameClientComponent } from './components/name-client/name-client.component';
-import { ViewWaiterOrderComponent } from './components/view-waiter-order/view-waiter-order.component'
+import { ViewWaiterOrderComponent } from './components/view-waiter-order/view-waiter-order.component';
+import { ItemMenuComponent } from './components/item-menu/item-menu.component';
+import { ItemBillComponent } from './components/item-bill/item-bill.component'
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { ViewWaiterOrderComponent } from './components/view-waiter-order/view-wa
     WelcomeComponent,
     HeaderWaiterComponent,
     NameClientComponent,
-    ViewWaiterOrderComponent
+    ViewWaiterOrderComponent,
+    ItemMenuComponent,
+    ItemBillComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,44 @@
+.contItemReceipt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.itemDescription {
+    display: flex;
+    padding-top: 8%;
+    flex-direction: column;
+    width: 65%;
+    border-bottom: dotted;
+    border-width: .3rem;
+    border-color: rgba(195, 169, 131);
+}
+
+.totalItems, .itemName, .itemPrice {
+    font-size: medium;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.itemPrice{
+    line-height: 2rem;
+}
+.contCounter {
+    display: flex;
+    width: 25%;
+    height: 6vh;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.btnRemove, .btnAdd {
+    background-color: transparent;
+    border: none;
+}
+
+.iconsCounter {
+    width: 50%;
+    height: auto;
+}

@@ -2,19 +2,23 @@
   "breakfast":[
     {
       "product": "Café Americano",
-      "price": 5
+      "price": 5,
+      "image": "https://cdn-icons-png.flaticon.com/512/924/924514.png"
     },
     {
       "product": "Café con Leche",
-      "price": 7
+      "price": 7,
+      "image": "https://cdn-icons-png.flaticon.com/512/3500/3500408.png"
     },
     {
       "product": "Sandwich de jamón y queso",
-      "price": 10
+      "price": 10,
+      "image": "https://cdn-icons-png.flaticon.com/512/2177/2177677.png"
     },
     {
       "product": "Jugo de Fruta Natural",
-      "price": 7
+      "price": 7,
+      "image": "https://cdn-icons-png.flaticon.com/512/2738/2738804.png"
     }
   ],
  "lunchAndDinner": [{
@@ -25,7 +29,8 @@
           "Res",
           "Vegana"
         ],
-        "price": 10
+        "price": 10,
+        "image": "https://cdn-icons-png.flaticon.com/512/1923/1923533.png"
       },
       "sizeDouble": {
         "type": [
@@ -33,39 +38,56 @@
           "Res",
           "Vegana"
         ],
-        "price": 15
+        "price": 15,
+        "image": "https://cdn-icons-png.flaticon.com/512/1161/1161644.png"
       },
       "additional":{
         "type": [
-          "Queso",
-          "Huevo"
+          {
+            "name": "Queso",
+            "image": "https://cdn-icons-png.flaticon.com/512/819/819827.png"
+          },
+          {
+            "name": "Huevo",
+            "image": "https://cdn-icons-png.flaticon.com/512/1046/1046774.png"
+          }
         ],
         "price": 1
       }
     },
     "apetizzer":{
       "type": [
-        "Aros de Cebolla",
-        "Papas Fritas"
+        {
+          "name": "Aros de Cebolla",
+          "image": "https://cdn-icons-png.flaticon.com/512/4829/4829193.png"
+        },
+        {
+          "name": "Papas Fritas",
+          "image": "https://cdn-icons-png.flaticon.com/512/1046/1046786.png"
+        }
       ],
       "price": 5
     },
     "drinks": [
       {
         "product": "Agua 500ml",
-        "price": 5
+        "price": 5,
+        "image": "https://cdn-icons-png.flaticon.com/512/8118/8118961.png"
       },
       {
         "product": "Agua 750ml",
-        "price": 7
+        "price": 7,
+        "image": "https://cdn-icons-png.flaticon.com/512/8118/8118961.png"
       },
       {
         "product": "Bebida/gaseosa 500ml",
-        "price": 7
+        "price": 7,
+        "image": "https://cdn-icons-png.flaticon.com/512/6033/6033069.png"
       },
       {
         "product": "Bebida/gaseosa 750ml",
-        "price": 10
+        "price": 10,
+        "image": "https://cdn-icons-png.flaticon.com/512/6033/6033069.png"
       }
     ]
   }]
