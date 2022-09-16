@@ -59,9 +59,11 @@
   }
 
   .contFoodOptions, .contItemsOrder {
+    background-color: red;
     width: 90%;
     height: 80%;
     margin: auto;
+    overflow: scroll;
   }
 
   .contItemsOrder {
