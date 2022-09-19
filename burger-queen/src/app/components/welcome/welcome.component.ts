@@ -1,5 +1,6 @@
 import { style } from '@angular/animations';
-import { Component, OnInit, ViewChild, Renderer2, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-welcome',
@@ -7,18 +8,28 @@ import { Component, OnInit, ViewChild, Renderer2, ElementRef } from '@angular/co
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
- @ViewChild('waiterBtn') waiter: ElementRef|any;
+ /* @ViewChild('waiterBtn') waiter: HTMLButtonElement; */
  
-constructor(private renderer2: Renderer2) {
-  /*  const btnWaiter =  *//* this.waiter.nativeElement */
+  constructor(private router: Router) { }
+  
+
+  changeViewWaiter() {
+    this.router.navigateByUrl('/menuWaiter')
+      .then(() => {
+        console.log(`Navegación exitosa`);
+      })
+      .catch((error) => {
+        console.log(`Falló la navegación: ${error.message}`);
+      });
   }
 
-  initWaiter(): void {
+
+ /*  initWaiter(): void {
    const btnWaiter = this.waiter.nativeElement
     console.log('aqui estamos', btnWaiter);
-    this.renderer2.setStyle(btnWaiter, 'style', 'background: url("https://blog.ida.cl/wp-content/uploads/sites/5/2020/04/tamano-redes-blog-655x470.png");')
-
- }
+    this.renderer2.setStyle(btnWaiter, 'style', 'background: url("https://blog.ida.cl/wp-content/uploads/sites/5/2020/04/tamano-redes-blog-655x470.png")')
+    
+ } */
 
 
  ngOnInit(): void {

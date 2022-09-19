@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-waiter',
@@ -7,8 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderWaiterComponent implements OnInit {
  
-  constructor() {
-   }
+  constructor(private router: Router) { }
+  
+  returnToWelcome() {
+    this.router.navigateByUrl('/welcome')
+      .then(() => {
+        console.log(`Regresamos al welcome de forma exitosa`);
+      })
+      .catch((error) => {
+        console.log(`Falló el regreso al welcome: ${error.message}`);
+      });
+  }
 
 
 
