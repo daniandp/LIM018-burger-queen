@@ -8,7 +8,9 @@ import { HeaderWaiterComponent } from './components/header-waiter/header-waiter.
 import { NameClientComponent } from './components/name-client/name-client.component';
 import { ViewWaiterOrderComponent } from './components/view-waiter-order/view-waiter-order.component';
 import { ItemMenuComponent } from './components/item-menu/item-menu.component';
-import { ItemBillComponent } from './components/item-bill/item-bill.component'
+import { ItemBillComponent } from './components/item-bill/item-bill.component';
+import { ContainerTicketsComponent } from './components/container-tickets/container-tickets.component';
+import { TicketOrderComponent } from './components/ticket-order/ticket-order.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { ItemBillComponent } from './components/item-bill/item-bill.component'
     NameClientComponent,
     ViewWaiterOrderComponent,
     ItemMenuComponent,
-    ItemBillComponent
+    ItemBillComponent,
+    ContainerTicketsComponent,
+    TicketOrderComponent,
   ],
   imports: [
     BrowserModule,
