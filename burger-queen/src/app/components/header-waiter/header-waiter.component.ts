@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NameClientComponent } from '../name-client/name-client.component'
 
 @Component({
   selector: 'app-header-waiter',
@@ -20,7 +21,11 @@ export class HeaderWaiterComponent implements OnInit {
       });
   }
 
-
+  getNameClient() {
+    const nameClient = document.querySelector('#nameClient') as HTMLInputElement;
+    console.log(nameClient);
+    
+  }
 
   ngOnInit(): void {
     
