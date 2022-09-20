@@ -23,6 +23,7 @@
 }
 .contLogo > img {
     height: 5rem;
+    cursor: pointer;
 }
 .btn{
     width: 12rem;
@@ -37,6 +38,10 @@
     font-family: 'Slackey', cursive; 
 }
 
-.btnWaiter{
+.btnWaiter {
     background: #FFB307;
+}
+.btnWaiterSelected{
+    background: #00CED1;
+    box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.25);
 }
