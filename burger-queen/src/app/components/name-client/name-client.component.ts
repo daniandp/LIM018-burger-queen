@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-name-client',
@@ -7,7 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NameClientComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  changeViewWaiter() {
+    this.router.navigateByUrl('/menuWaiter')
+      .then(() => {
+        console.log(`View waiter de forma exitosa`);
+      })
+      .catch((error) => {
+        console.log(`Falló el view waiter: ${error.message}`);
+      });
+  }
 
   ngOnInit(): void {
   }

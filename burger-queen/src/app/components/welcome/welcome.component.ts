@@ -13,13 +13,13 @@ export class WelcomeComponent implements OnInit {
   constructor(private router: Router) { }
   
 
-  changeViewWaiter() {
-    this.router.navigateByUrl('/menuWaiter')
+  changeViewClientName() {
+    this.router.navigateByUrl('/nameClient')
       .then(() => {
-        console.log(`Navegación exitosa`);
+        console.log(`Navegación exitosa al client name`);
       })
       .catch((error) => {
-        console.log(`Falló la navegación: ${error.message}`);
+        console.log(`Falló la navegación al client name: ${error.message}`);
       });
   }
 
