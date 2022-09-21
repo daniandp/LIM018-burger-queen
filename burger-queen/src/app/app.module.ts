@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
@@ -11,6 +11,7 @@ import { ItemMenuComponent } from './components/item-menu/item-menu.component';
 import { ItemBillComponent } from './components/item-bill/item-bill.component';
 import { ContainerTicketsComponent } from './components/container-tickets/container-tickets.component';
 import { TicketOrderComponent } from './components/ticket-order/ticket-order.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { TicketOrderComponent } from './components/ticket-order/ticket-order.com
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import DataMenu from 'src/assets/menu.json';
 
 @Component({
   selector: 'app-item-menu',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./item-menu.component.css']
 })
 export class ItemMenuComponent implements OnInit {
+  Menu: any = DataMenu;
 
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }
