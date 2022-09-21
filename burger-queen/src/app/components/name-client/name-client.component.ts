@@ -8,26 +8,21 @@ import { ConnectionServiceService } from 'src/app/connection-service.service';
   styleUrls: ['./name-client.component.css']
 })
 export class NameClientComponent implements OnInit {
-  @ViewChild('nameClient') clientName!:ElementRef
-  message: string = '';
-  approvalText: string = '';
+  /* @ViewChild('nameClient') */ /* clientName!:ElementRef */
+  /* message: string = '';
+  approvalText: string = ''; */
   /* @Input() clientName: Array<any> = [] */
   /* clientName: string = '' */
  /*  prueba: any = 'flor' */
-  constructor(private router: Router, private appService: ConnectionServiceService) { }
+  constructor(private router: Router, private serviceConnection: ConnectionServiceService) { }
 
   /* ngAfterViewInit() { } */
 
-  changeViewWaiter(/* inputNameValue: string */) {
+  changeViewWaiter(clientName:string) {
     this.router.navigateByUrl('/menuWaiter')
       .then(() => {
-        this.appService.currentStateName.subscribe((msg: string) => {
-          console.log(msg, 'aqui');
-          this.message = msg
-        })
-        this.appService.updateStateName(this.clientName.nativeElement.value);
-        console.log(this.clientName.nativeElement.value , 'ACA 2');
-        
+        this.serviceConnection.sendNameClient(clientName)
+        console.log(clientName, '==> NOMBRE DEL CLIENTE');
         
         /* console.log(`View waiter de forma exitosa`) */
         /* this.clientName.nativeElement.value.next(this.message) */

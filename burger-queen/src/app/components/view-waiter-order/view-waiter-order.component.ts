@@ -9,16 +9,20 @@ import { NameClientComponent } from '../name-client/name-client.component';
   styleUrls: ['./view-waiter-order.component.css']
 })
 export class ViewWaiterOrderComponent implements OnInit {
-  message: string = '';
+  clientName: string = '';
   /* prueba:any =  */
-  componentNameClient: any = NameClientComponent
+ /*  componentNameClient: any = NameClientComponent */
   
-  constructor(private appService: ConnectionServiceService) { }
+  constructor(private serviceConnection: ConnectionServiceService) { }
 
- /*  ngAfterViewInit() { } */
+  /* ngAfterViewInit() { } */
   
   ngOnInit(): void {
-    console.log('Nombre en el view waiter component =>', this.appService.currentStateName.subscribe ((msg:string) => this.message = msg ));
+    this.serviceConnection.receivedNameClient().subscribe((data) => {
+      this.clientName = data;
+      console.log(data, '==> nombre del cliente en VISTA MESERO');
+    })
+ /*    console.log('Nombre en el view waiter component =>', this.appService.currentStateName.subscribe ((msg:string) => this.message = msg )); */
    /*  this.connection.connectionTrigger.subscribe(data => {
       console.log('Recibiendo data...', data);
     }) */
