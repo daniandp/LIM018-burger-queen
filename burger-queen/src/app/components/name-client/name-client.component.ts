@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, /* Input */ } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild,/* Input */ } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConnectionServiceService } from 'src/app/connection-service.service';
 
@@ -14,15 +14,16 @@ export class NameClientComponent implements OnInit {
   /* @Input() clientName: Array<any> = [] */
   /* clientName: string = '' */
  /*  prueba: any = 'flor' */
-  constructor(private router: Router, private serviceConnection: ConnectionServiceService) { }
-
+  constructor(private router: Router) { }
+  clientName: string = '';
   /* ngAfterViewInit() { } */
 
-  changeViewWaiter(clientName:string) {
-    this.router.navigateByUrl('/menuWaiter')
-      .then(() => {
-        this.serviceConnection.sendNameClient(clientName)
-        console.log(clientName, '==> NOMBRE DEL CLIENTE');
+  changeViewWaiter() {
+    this.router.navigate(['/menuWaiter'], {queryParams: {data: this.clientName}})
+    console.log(this.clientName, 'VISTA DEL QUE');
+    
+/*         this.serviceConnection.sendNameClient(clientName)
+        console.log(clientName, '==> NOMBRE DEL CLIENTE'); */
         
         /* console.log(`View waiter de forma exitosa`) */
         /* this.clientName.nativeElement.value.next(this.message) */
@@ -30,11 +31,7 @@ export class NameClientComponent implements OnInit {
         this.connection.connectionTrigger.emit({ */
          /*  data: */
          /*  }); */
-      })
-      .catch((error) => {
-        console.log(`Falló el view waiter: ${error.message}`);
-      });
-  }
+      }
 
   ngOnInit(): void { }
 
