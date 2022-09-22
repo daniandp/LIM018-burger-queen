@@ -7,11 +7,10 @@ import DataMenu from 'src/assets/menu.json';
   styleUrls: ['./item-menu-lunch-and-dinner.component.css']
 })
 export class ItemMenuLunchAndDinnerComponent implements OnInit {
-  Menu: any = DataMenu.lunchAndDinner.hamburguers;
+  Menu: any = DataMenu;
   
   constructor() { }
   
   ngOnInit(): void {
-  }
-  
+   }
   }
