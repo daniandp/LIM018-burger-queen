@@ -21,75 +21,64 @@
       "image": "https://cdn-icons-png.flaticon.com/512/2738/2738804.png"
     }
   ],
- "lunchAndDinner": [
-  {
-    "hamburgers": {
-      "sizeSimple": {
+ "lunchAndDinner":[
+    { 
+        "product": "Hamburguesa Simple",
         "type": [
           "Pollo",
           "Res",
           "Vegana"
         ],
         "price": 10,
-        "image": "https://cdn-icons-png.flaticon.com/512/1923/1923533.png"
-      },
-      "sizeDouble": {
-        "type": [
-          "Pollo",
-          "Res",
-          "Vegana"
-        ],
-        "price": 15,
-        "image": "https://cdn-icons-png.flaticon.com/512/1161/1161644.png"
-      },
-      "additional":{
-        "type": [
-          {
-            "name": "Queso",
-            "image": "https://cdn-icons-png.flaticon.com/512/819/819827.png"
-          },
-          {
-            "name": "Huevo",
-            "image": "https://cdn-icons-png.flaticon.com/512/1046/1046774.png"
-          }
-        ],
-        "price": 1
-      }
+        "image": "https://cdn-icons-png.flaticon.com/512/1923/1923533.png",
+        "additional": [
+          "Queso",
+          "Huevo"
+        ]
     },
-    "apetizzer":{
+    { 
+      "product": "Hamburguesa Doble",
       "type": [
-        {
-          "name": "Aros de Cebolla",
-          "image": "https://cdn-icons-png.flaticon.com/512/4829/4829193.png"
-        },
-        {
-          "name": "Papas Fritas",
-          "image": "https://cdn-icons-png.flaticon.com/512/1046/1046786.png"
-        }
+        "Pollo",
+        "Res",
+        "Vegana"
       ],
-      "price": 5
+      "price": 10,
+      "image": "https://cdn-icons-png.flaticon.com/512/1161/1161644.png",
+      "additional": [
+        "Queso",
+        "Huevo"
+      ]
+  },
+    {
+      "product": "Aros de Cebolla",
+      "price": 5,
+      "image": "https://cdn-icons-png.flaticon.com/512/4829/4829193.png"
     },
-    "drinks": [
-      {
-        "product": "Agua 500ml",
-        "price": 5,
-        "image": "https://cdn-icons-png.flaticon.com/512/8118/8118961.png"
-      },
-      {
-        "product": "Agua 750ml",
-        "price": 7,
-        "image": "https://cdn-icons-png.flaticon.com/512/8118/8118961.png"
-      },
-      {
-        "product": "Bebida/gaseosa 500ml",
-        "price": 7,
-        "image": "https://cdn-icons-png.flaticon.com/512/6033/6033069.png"
-      },
-      {
-        "product": "Bebida/gaseosa 750ml",
-        "price": 10,
-        "image": "https://cdn-icons-png.flaticon.com/512/6033/6033069.png"
-      }
-    ]
-  }]
+    {
+      "product": "Papas Fritas",
+      "price": 5,
+      "image": "https://cdn-icons-png.flaticon.com/512/1046/1046786.png"
+    },
+    {
+      "product": "Agua 500ml",
+      "price": 5,
+      "image": "https://cdn-icons-png.flaticon.com/512/8118/8118961.png"
+    },
+    {
+      "product": "Agua 750ml",
+      "price": 7,
+      "image": "https://cdn-icons-png.flaticon.com/512/8118/8118961.png"
+    },
+    {
+      "product": "Bebida/gaseosa 500ml",
+      "price": 7,
+      "image": "https://cdn-icons-png.flaticon.com/512/6033/6033069.png"
+    },
+    {
+      "product": "Bebida/gaseosa 750ml",
+      "price": 10,
+      "image": "https://cdn-icons-png.flaticon.com/512/6033/6033069.png"
+    }
+  ]
 }
