@@ -15,7 +15,7 @@ export class ViewWaiterOrderComponent implements OnInit {
   
   ngOnInit(): void {
     this.router.queryParams.subscribe((params: any) => {
-      this.clientName = params.data;
+      this.clientName = params.client;
       console.log('CLIENTE ', this.clientName = params.client);
     })
 
