@@ -21,7 +21,8 @@
       "image": "https://cdn-icons-png.flaticon.com/512/2738/2738804.png"
     }
   ],
- "lunchAndDinner": [{
+ "lunchAndDinner": [
+  {
     "hamburgers": {
       "sizeSimple": {
         "type": [

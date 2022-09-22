@@ -6,15 +6,13 @@
                 INGRESE EL NOMBRE DEL CLIENTE
             </h2>
         </div>
-        <form>
-            <div class="client clientInput">
-                <input [(ngModel)]="clientName" [ngModelOptions]="{standalone: true}" type="text" id="nameClient" class="inputNameClient" placeholder=" EJEMPLO:  MARITA FLORES" autof>
-            </div>
+        <div class="client clientInput">
+            <input [(ngModel)]="clientName" type="text" maxlength="12" id="nameClient" class="inputNameClient" placeholder=" EJEMPLO:  MARITA FLORES" autofocus>
+        </div>
 
-            <div class="client" >
-                <button id="idBtnGetOrder" class="btnGetOrder"type="button" (click)="changeViewWaiter()">INICIAR PEDIDO</button>
-            </div>
-        </form>
+        <div class="client" >
+            <button id="idBtnGetOrder" class="btnGetOrder"type="button" (click)="changeViewWaiter()">INICIAR PEDIDO</button>
+        </div>
     </div>
 </section>
 

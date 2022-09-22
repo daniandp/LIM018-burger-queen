@@ -12,6 +12,10 @@ import { ItemBillComponent } from './components/item-bill/item-bill.component';
 import { ContainerTicketsComponent } from './components/container-tickets/container-tickets.component';
 import { TicketOrderComponent } from './components/ticket-order/ticket-order.component';
 import { RouterModule } from '@angular/router';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { ItemMenuLunchAndDinnerComponent } from './components/item-menu/item-menu-lunch-and-dinner/item-menu-lunch-and-dinner.component';
 
 @NgModule({
   declarations: [
@@ -24,11 +28,14 @@ import { RouterModule } from '@angular/router';
     ItemBillComponent,
     ContainerTicketsComponent,
     TicketOrderComponent,
+    ItemMenuLunchAndDinnerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore())
   ],
   providers: [],
   bootstrap: [AppComponent]
