@@ -49,6 +49,10 @@
     align-items: center;
     justify-content: center;
   }
+  .clientName {
+    font-size: xx-small;
+    width: 50%;
+  }
 
   .totalCash, .contClient > span {
     font-size: x-large;

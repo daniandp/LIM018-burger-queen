@@ -1,6 +1,7 @@
 {
   "projects": {
-    "bg": "burger-queen-cc2a9"
+    "bg": "burger-queen-cc2a9",
+    "default": "burger-queen-cc2a9"
   },
   "targets": {},
   "etags": {}
