@@ -17,7 +17,7 @@
     width: 25%;
 }
 .imageItemMenu {
-    width: 65%;
+    width: 50%;
     height: auto;
 }
 
@@ -42,7 +42,7 @@
     border-radius: 1rem;
     border-style: none;
     font-size: medium;
-    text-shadow: 0 0.25rem 0.25rem rgb(0 0 0 / 25%);
+    text-shadow: 0 0 6px #000000, 0 0 2px #000000;
     cursor: pointer;
     font-family: "Slackey", cursive;
     align-items: center;

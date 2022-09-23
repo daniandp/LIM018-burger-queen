@@ -1,0 +1,116 @@
+.contModalBurgers {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 2rem;
+    width: 90vw;
+    height: 70vh;
+    gap: 5%;
+    background: rgba(195, 169, 131, 0.9);
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 0.5rem;
+}
+
+.contTitleModal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2%;
+    height: 10vh;
+    background: rgba(255, 255, 255, 0.45);
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.contTitleModal > img, .contOptions > label > img {
+    height: 75%;
+}
+
+.contTypeBurger {
+    display: flex;
+    height: 10vh;
+}
+
+.txtType, .contTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 100%;
+}
+
+.contTitle {
+    align-items: flex-start;
+}
+
+.contListOfTypes, .contOptions {
+    display: flex;
+    align-items: center;
+    padding-left: 2%;
+    width: 60%;
+}
+
+.listOfTypes {
+    display: flex;
+    padding: 0;
+    width: 50%;
+    height: 40%;
+    border-radius: 0.5rem;
+    text-align: center;
+}
+
+.contAdditionals {
+    display: flex;
+    height: 35vh;
+    flex-direction: column;
+}
+
+.contSectionsAdd {
+    display: flex;
+    height: 25vh;
+}
+
+.contOptions {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20%;
+}
+
+.contOptions > label {
+    display: flex;
+    width: 35%;
+    height: 30%;
+    align-items: center;
+    justify-content: center;
+    gap: 10%;
+}
+
+.contOptions > label > input {
+    justify-self: center;
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    float: left;
+    border-radius: 100%;
+}
+
+.contBtnAcept {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}
+
+.btn {
+    width: 12rem;
+    height: 3rem;
+    box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.25);
+    border-radius: 0.5rem;
+    border-style: none;
+    color: #FFFFFF;
+    font-size:  medium;
+    text-shadow: 0 0 6px #000000, 0 0 2px #000000;
+    cursor: pointer;
+    font-family: 'Slackey', cursive; 
+    background: #FFB307;
+}

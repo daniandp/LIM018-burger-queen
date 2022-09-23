@@ -60,6 +60,7 @@
   .btn {
     background-color: #FFB307;
     color: #fff;
+    text-shadow: 0 0 6px #000000, 0 0 2px #000000;
   }
 
   .contFoodOptions, .contItemsOrder {
