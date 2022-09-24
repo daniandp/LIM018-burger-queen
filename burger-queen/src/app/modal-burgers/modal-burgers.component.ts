@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConnectionServiceService } from '../connection-service.service';
 
 @Component({
   selector: 'app-modal-burgers',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalBurgersComponent implements OnInit {
 
-  constructor() { }
+  constructor(private showModal: ConnectionServiceService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+  
+  closeModal() {
+    this.showModal.$modal.emit(false);
   }
 
 }

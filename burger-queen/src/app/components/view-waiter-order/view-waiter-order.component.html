@@ -1,7 +1,7 @@
 <app-header-waiter></app-header-waiter>
 <section class="sectionOrder">
-    <app-modal-burgers></app-modal-burgers>
-    <!-- <section class="contMenuItems">
+    <!-- <app-modal-burgers></app-modal-burgers> -->
+    <section class="contMenuItems">
         <div class="contBtn">
             <button id="btnBreakfast" class="btnMenuOrder">MENU DESAYUNO</button>
             <button id="btnLunch" class="btnMenuOrder">MENU ALMUERZO Y CENA</button>
@@ -24,5 +24,8 @@
                 <button id="sendOrder" class="btn">ENVIAR ORDEN</button>
             </div>
         </div>
-    </section> -->
+    </section>
 </section>
+<div *ngIf="modalSwitch === true">
+    <app-modal-burgers></app-modal-burgers>
+</div>

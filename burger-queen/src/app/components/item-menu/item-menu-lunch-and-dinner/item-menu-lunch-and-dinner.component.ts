@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ConnectionServiceService } from 'src/app/connection-service.service';
 import DataMenu from 'src/assets/menu.json';
+
 
 @Component({
   selector: 'app-item-menu-lunch-and-dinner',
@@ -8,9 +10,20 @@ import DataMenu from 'src/assets/menu.json';
 })
 export class ItemMenuLunchAndDinnerComponent implements OnInit {
   Menu: any = DataMenu;
+  modalSwitch: boolean = false;
+
   
-  constructor() { }
+  constructor(private showModal: ConnectionServiceService) { }
   
-  ngOnInit(): void {
-   }
+  ngOnInit(): void { 
+
+    this.showModal.$modal.subscribe((valor:any) => {
+      this.modalSwitch = valor;
+    })
+
+  }
+  openModal() {
+    this.modalSwitch = true;
+  }
+
   }
