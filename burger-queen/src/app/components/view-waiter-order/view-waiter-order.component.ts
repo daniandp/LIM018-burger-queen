@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ConnectionServiceService } from 'src/app/connection-service.service';
 import { NameClientComponent } from '../name-client/name-client.component';
@@ -21,9 +21,10 @@ export class ViewWaiterOrderComponent implements OnInit {
       console.log('CLIENTE ', this.clientName = params.client);
     })
 
-    this.showModal.$modal.subscribe((valor:any) => {
+  /*   this.showModal.$modal.subscribe((valor:any) => {
       this.modalSwitch = valor;
-    })
+      console.log('aqui');
+    }) */
 
   }
 

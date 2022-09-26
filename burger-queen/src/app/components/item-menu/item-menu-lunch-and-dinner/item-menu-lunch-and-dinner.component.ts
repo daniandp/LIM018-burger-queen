@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ConnectionServiceService } from 'src/app/connection-service.service';
 import DataMenu from 'src/assets/menu.json';
 
@@ -11,7 +11,6 @@ import DataMenu from 'src/assets/menu.json';
 export class ItemMenuLunchAndDinnerComponent implements OnInit {
   Menu: any = DataMenu;
   modalSwitch: boolean = false;
-
   
   constructor(private showModal: ConnectionServiceService) { }
   

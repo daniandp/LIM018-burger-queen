@@ -7,9 +7,9 @@
         <div class="itemPrice">${{item.price}}</div>
     </div>
     <div class="contBtnAddItem">
-        <button id="addItem" class="btnAddItem" (click)="openModal()">AGREGAR</button>
+        <button #btnAdd id="addItem" class="btnAddItem" (click)="openModal()">AGREGAR</button>
     </div>
 </section>
-<!-- <div *ngIf="modalSwitch === true">
+<div *ngIf="modalSwitch === true">
     <app-modal-burgers></app-modal-burgers>
-</div> -->
+</div>
