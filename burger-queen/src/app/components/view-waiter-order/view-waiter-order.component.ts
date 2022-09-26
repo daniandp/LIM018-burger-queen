@@ -21,11 +21,6 @@ export class ViewWaiterOrderComponent implements OnInit {
       console.log('CLIENTE ', this.clientName = params.client);
     })
 
-  /*   this.showModal.$modal.subscribe((valor:any) => {
-      this.modalSwitch = valor;
-      console.log('aqui');
-    }) */
-
   }
 
 }
