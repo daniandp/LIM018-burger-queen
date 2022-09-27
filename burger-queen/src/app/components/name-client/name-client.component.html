@@ -10,7 +10,7 @@
             <input [(ngModel)]="clientName" type="text" maxlength="12" id="nameClient" class="inputNameClient" placeholder=" EJEMPLO:  MARITA FLORES" autofocus>
         </div>
 
-        <div class="client" >
+        <div class="client" *ngIf="clientName !==''">
             <button id="idBtnGetOrder" class="btnGetOrder"type="button" (click)="changeViewWaiter()">INICIAR PEDIDO</button>
         </div>
     </div>

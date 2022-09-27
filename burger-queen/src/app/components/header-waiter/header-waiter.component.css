@@ -3,7 +3,6 @@
 
 .contHeader , .contBtnsHeader {
     display: flex;
-    gap: 10%;
 }
 
 .contHeader {
@@ -20,11 +19,30 @@
     justify-content: center;
     align-items: center;
     min-width: 50%;
+    gap: 10% ;
 }
 .contLogo > img {
     height: 5rem;
     cursor: pointer;
 }
+
+.contTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}
+
+.contTitle > h1 {
+    font-family: 'Slackey', cursive;
+    font-size: xx-large;
+    background: linear-gradient(180deg, #FFB307 0%, rgba(242, 128, 5, 0.931668) 50.35%, rgba(209, 0, 0, 0.76) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-text-stroke: 0.5px rgb(54, 47, 47);
+}
+
 .btn{
     width: 12rem;
     height: 3rem;

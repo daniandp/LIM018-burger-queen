@@ -7,9 +7,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./name-client.component.css']
 })
 export class NameClientComponent implements OnInit {
+  clientName: string = '';
 
   constructor(private router: Router) { }
-  clientName: string = '';
 
   changeViewWaiter() {
     this.router.navigate(['/menuWaiter'], {queryParams: {client: this.clientName}})
