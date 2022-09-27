@@ -13,7 +13,7 @@ export class ModalBurgersComponent implements OnInit {
   ngOnInit(): void { }
   
   closeModal() {
-    this.showModal.$modal.emit(false);
+    this.showModal.$conector.emit(false);
   }
 
 }

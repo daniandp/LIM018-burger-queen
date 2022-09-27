@@ -100,3 +100,9 @@
     width: 100%;
     height: 20%;
   }
+  .btnWaiterSelected{
+    background: #00CED1;
+    color: #fff;
+    text-shadow: 0 0 6px #000000, 0 0 2px #000000;
+    box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.25);
+}

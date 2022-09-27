@@ -16,7 +16,7 @@ export class ItemMenuLunchAndDinnerComponent implements OnInit {
   
   ngOnInit(): void { 
 
-    this.showModal.$modal.subscribe((valor:any) => {
+    this.showModal.$conector.subscribe((valor:any) => {
       this.modalSwitch = valor;
     })
 
