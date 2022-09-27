@@ -2,8 +2,8 @@
 <section class="sectionOrder">
     <section class="contMenuItems">
         <div class="contBtn">
-            <button id="btnBreakfast" class="btnMenuOrder" (click)="showBreakfast()">MENU DESAYUNO</button>
-            <button id="btnLunch" class="btnMenuOrder" (click)="showLunchAndDinner()">MENU ALMUERZO Y CENA</button>
+            <button #btnBreakfast id="btnBreakfast" class="btnWaiterSelected btnMenuOrder" (click)="showBreakfast()">MENU DESAYUNO</button>
+            <button #btnLunch id="btnLunch" class="btnMenuOrder" (click)="showLunchAndDinner()">MENU ALMUERZO Y CENA</button>
         </div>
         <div class="contFoodOptions">
             <div class="menuBreakfast" *ngIf="breakfastSwitch">

@@ -3,10 +3,10 @@
         <img class="imageItemMenu" src="{{item.image}}" alt="imagen item menu">
     </div>
     <div class="contItemDescription">
-        <span class="itemName">{{item.product}}</span>
-        <div class="itemPrice">${{item.price}}</div>
+        <span #product class="itemName">{{item.product}}</span>
+        <div #price class="itemPrice">${{item.price}}</div>
     </div>
     <div class="contBtnAddItem">
-        <button id="addItem" class="btnAddItem">AGREGAR</button>
+        <button id="addItem" class="btnAddItem" (click)="getElemMenu()">AGREGAR</button>
     </div>
 </section>

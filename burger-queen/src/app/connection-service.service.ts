@@ -13,7 +13,7 @@ export class ConnectionServiceService {
     return addDoc(menuRef, menu);
   }
 
-  $modal = new EventEmitter<any>();
+  $conector = new EventEmitter<any>();
 
 
 }
