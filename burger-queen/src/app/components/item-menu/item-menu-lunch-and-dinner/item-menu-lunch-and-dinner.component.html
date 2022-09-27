@@ -9,7 +9,7 @@
     <div class="contBtnAddItem">
         <button #btnAdd id="addItem" class="btnAddItem" (click)="openModal()">AGREGAR</button>
     </div>
+    <div *ngIf="modalSwitch && item.product.includes('Hamburguesa')">
+        <app-modal-burgers></app-modal-burgers>
+    </div>
 </section>
-<div *ngIf="modalSwitch === true">
-    <app-modal-burgers></app-modal-burgers>
-</div>

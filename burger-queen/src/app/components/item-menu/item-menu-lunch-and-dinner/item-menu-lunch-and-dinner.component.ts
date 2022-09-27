@@ -22,7 +22,9 @@ export class ItemMenuLunchAndDinnerComponent implements OnInit {
 
   }
   openModal() {
-    this.modalSwitch = true;
+    // if (this.Menu.lunchAndDinner.product.startsWith('Hamburguesa')) {
+      this.modalSwitch = true;
+    // }
   }
 
   }
