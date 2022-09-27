@@ -3,11 +3,24 @@
     <!-- <app-modal-burgers></app-modal-burgers> -->
     <section class="contMenuItems">
         <div class="contBtn">
-            <button id="btnBreakfast" class="btnMenuOrder">MENU DESAYUNO</button>
-            <button id="btnLunch" class="btnMenuOrder">MENU ALMUERZO Y CENA</button>
+            <button id="btnBreakfast" class="btnMenuOrder" (click)="showBreakfast()" >MENU DESAYUNO</button>
+            <button id="btnLunch" class="btnMenuOrder" (click)="showLunchAndDinner()">MENU ALMUERZO Y CENA</button>
         </div>
-        <div class="contFoodOptions">
-            <app-item-menu-lunch-and-dinner></app-item-menu-lunch-and-dinner>
+        <div class="contFoodOptions" *ngIf="breakfastSwitch; else prueba">
+        
+         <div>
+            <app-item-menu></app-item-menu>
+        </div>
+        
+         <ng-template #prueba>
+             <app-item-menu-lunch-and-dinner></app-item-menu-lunch-and-dinner>
+        </ng-template>
+
+
+           <!-- <div *ngIf="lunchAndDinnerSwitch">
+                <app-item-menu-lunch-and-dinner></app-item-menu-lunch-and-dinner>
+            </div> -->  
+
         </div>
     </section>
     <section class="contResumen">
