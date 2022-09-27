@@ -64,11 +64,17 @@
     text-shadow: 0 0 6px #000000, 0 0 2px #000000;
   }
 
-  .contFoodOptions, .contItemsOrder {
+  .contFoodOptions, .contItemsOrder, .menuBreakfast, .menuLunchAndDinner {
     width: 90%;
     height: 80%;
     margin: auto;
   }
+
+  .menuBreakfast, .menuLunchAndDinner {
+    width: 100%;
+  }
+
+  
 
 .contFoodOptions {
   overflow: scroll;

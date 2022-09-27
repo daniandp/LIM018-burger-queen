@@ -11,9 +11,9 @@ import { NameClientComponent } from '../name-client/name-client.component';
 })
 export class ViewWaiterOrderComponent implements OnInit {
   clientName: string = '';
-  modalSwitch: boolean = false;
+  modalSwitch!: boolean;
   breakfastSwitch: boolean = true; // item Menú
-  lunchAndDinnerSwitch: boolean = false; // menú lunch & dinner 
+  lunchAndDinnerSwitch!: boolean; // menú lunch & dinner 
   
   constructor(private router: ActivatedRoute, private showModal: ConnectionServiceService) { }
   
