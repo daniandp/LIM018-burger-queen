@@ -21,7 +21,7 @@
             <span id="clientName" class="clientName">{{ clientName }}</span>
         </div>
         <div class="contItemsOrder">
-            <div class="orderResumen">
+            <div class="orderResumen" *ngIf="itemBillSwitch">
                 <app-item-bill></app-item-bill>
             </div>
             <div class="contFooterResumen">
