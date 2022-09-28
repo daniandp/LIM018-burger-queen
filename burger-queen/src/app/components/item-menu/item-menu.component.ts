@@ -16,11 +16,13 @@ export class ItemMenuComponent implements OnInit {
 
   ngOnInit(): void { }
   
-  getElemMenu() {
+  getElemMenu(param: any) {
+    console.log(param);
+    
     const itemsMenu = {
-      product : this.productName.nativeElement.textContent,
-      price: this.priceTag.nativeElement.textContent,
-      itemBill: this.itemBillSwitch = true,
+      product : param.product,
+      price: param.price,
+      itemBill: true,
     }
     this.connector.$conector.emit(itemsMenu)
    

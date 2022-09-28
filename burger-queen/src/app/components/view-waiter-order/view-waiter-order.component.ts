@@ -28,6 +28,8 @@ export class ViewWaiterOrderComponent implements OnInit {
     })
     this.connector.$conector.subscribe((valor:any)=>{
       this.itemBillSwitch = valor;
+      // console.log(valor);
+      
     })
       
   }

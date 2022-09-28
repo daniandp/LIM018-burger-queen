@@ -21,10 +21,11 @@ export class ItemMenuLunchAndDinnerComponent implements OnInit {
     })
 
   }
-  openModal() {
-    // if (this.Menu.lunchAndDinner.product.startsWith('Hamburguesa')) {
+  openModal(param: any) {
+    if (param.product.startsWith('Hamburguesa')) {
       this.modalSwitch = true;
-    // }
+    }
+    console.log(this.modalSwitch);
   }
 
   }
