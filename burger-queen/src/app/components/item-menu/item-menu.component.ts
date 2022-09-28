@@ -11,8 +11,8 @@ export class ItemMenuComponent implements OnInit {
   Menu: any = DataMenu;
   @ViewChild('product') productName!: ElementRef;
   @ViewChild('price') priceTag!: ElementRef;
-  
-  constructor(private getItemMenu: ConnectionServiceService) { }
+  itemBillSwitch: boolean = false;
+  constructor(private connector: ConnectionServiceService) { }
 
   ngOnInit(): void { }
   
@@ -20,8 +20,10 @@ export class ItemMenuComponent implements OnInit {
     const itemsMenu = {
       product : this.productName.nativeElement.textContent,
       price: this.priceTag.nativeElement.textContent,
+      itemBill: this.itemBillSwitch = true,
     }
-    this.getItemMenu.$conector.emit(itemsMenu)
+    this.connector.$conector.emit(itemsMenu)
+   
 
     
   }

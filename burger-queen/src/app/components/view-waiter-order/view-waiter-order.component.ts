@@ -19,13 +19,17 @@ export class ViewWaiterOrderComponent implements OnInit {
   @ViewChild('btnLunch') buttonLunch!: ElementRef;
 
   
-  constructor(private router: ActivatedRoute, private conector: ConnectionServiceService, private renderer2: Renderer2) { }
+  constructor(private router: ActivatedRoute, private connector: ConnectionServiceService, private renderer2: Renderer2) { }
   
   ngOnInit(): void {
     this.router.queryParams.subscribe((params: any) => {
       this.clientName = params.client;
       console.log('CLIENTE ', this.clientName = params.client);
     })
+    this.connector.$conector.subscribe((valor:any)=>{
+      this.itemBillSwitch = valor;
+    })
+      
   }
 
   showBreakfast(){
