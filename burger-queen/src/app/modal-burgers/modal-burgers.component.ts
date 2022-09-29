@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ConnectionServiceService } from '../connection-service.service';
 
 @Component({
@@ -7,13 +7,23 @@ import { ConnectionServiceService } from '../connection-service.service';
   styleUrls: ['./modal-burgers.component.css']
 })
 export class ModalBurgersComponent implements OnInit {
-
-  constructor(private showModal: ConnectionServiceService) { }
+  constructor(private connector: ConnectionServiceService) { }
+  @ViewChild('selectType') select!: ElementRef;
+  @ViewChild('addCheese') cheese!: ElementRef;
+  @ViewChild('addEgg') egg!: ElementRef;
+  burgerOptions: object = {};
 
   ngOnInit(): void { }
   
+
   closeModal() {
-    this.showModal.$conector.emit(false);
+    this.burgerOptions = {
+      product: this.select.nativeElement.value,
+      egg: this.egg.nativeElement.value,
+      cheese: this.cheese.nativeElement.value,
+      statusModal: false
+    }
+    this.connector.$conector.emit(this.burgerOptions);
   }
 
 }
