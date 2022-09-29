@@ -12,19 +12,45 @@ export class ItemMenuLunchAndDinnerComponent implements OnInit {
   Menu: any = DataMenu;
   modalSwitch: boolean = false;
   arrOrder: Array<any> = [];
+  burgerOptions: object = {};
   
   constructor(private connector: ConnectionServiceService) { }
   
   ngOnInit(): void { 
-
     this.connector.$conector.subscribe((valor:any) => {
       this.modalSwitch = valor.statusModal;
+      this.burgerOptions = valor;
     })
 
   }
+
+  getElemMenu(param: any) { 
+    this.addItem(param);
+    console.log(this.arrOrder, 'ARRAAAAAAY ORDER');
+    
+    this.connector.$conector.emit(this.arrOrder);
+  }
+  
   openModal(param: any) {
     if (param.product.startsWith('Hamburguesa')) {
       this.modalSwitch = true;
     }
   }
+
+
+  addItem(itemsMenu: any) {
+  /*   if(this.arrOrder.some((elem) => elem.product === itemsMenu.product)) {
+      this.arrOrder = this.arrOrder.map((elem) => {
+        if (elem.product === itemsMenu.product) {
+          elem.cont += 1;
+          return elem;
+        }
+        return elem;
+      });
+    } else { */
+      this.arrOrder.push({...itemsMenu, cont: 1 });
+    /* }
+    console.log(this.arrOrder, 'LA TORRE INCLINADA DE LAS AREPAS'); */
+  }
+
   }

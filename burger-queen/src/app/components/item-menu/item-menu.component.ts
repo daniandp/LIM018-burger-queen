@@ -11,23 +11,18 @@ export class ItemMenuComponent implements OnInit {
   Menu: any = DataMenu;
   @ViewChild('product') productName!: ElementRef;
   @ViewChild('price') priceTag!: ElementRef;
-  itemBillSwitch: boolean = false;
   arrOrder: Array<any> = [];
   constructor(private connector: ConnectionServiceService) { }
 
   ngOnInit(): void { }
   
-  getElemMenu(param: any) {
-    const itemsMenu = {
-      product : param.product,
-      price: param.price,
-      cont: 1
-    }    
+  getElemMenu(param: any) { 
     this.addItem(param);
+    this.connector.$conector.emit(this.arrOrder);
   }
 
-  addItem(itemsMenu: any){
-    if(this.arrOrder.some((elem) => elem.product === itemsMenu.product)) {
+  addItem(itemsMenu: any) {
+/*     if(this.arrOrder.some((elem) => elem.product === itemsMenu.product)) {
       this.arrOrder = this.arrOrder.map((elem) => {
         if (elem.product === itemsMenu.product) {
           elem.cont += 1;
@@ -35,10 +30,9 @@ export class ItemMenuComponent implements OnInit {
         }
         return elem;
       });
-    } else {
+    } else { */
       this.arrOrder.push({...itemsMenu, cont: 1 });
-    }
+    //}
     console.log(this.arrOrder, 'LA TORRE INCLINADA DE LAS AREPAS');
-    this.connector.$conector.emit(this.arrOrder);
   }
 }

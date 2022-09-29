@@ -14,7 +14,6 @@ export class ViewWaiterOrderComponent implements OnInit {
   modalSwitch!: boolean;
   breakfastSwitch: boolean = true; // item Menú
   lunchAndDinnerSwitch!: boolean; // menú lunch & dinner 
-  itemBillSwitch!: boolean; // creación de items de orden
   @ViewChild('btnBreakfast') buttonBreakFast!: ElementRef;
   @ViewChild('btnLunch') buttonLunch!: ElementRef;
 
@@ -25,9 +24,6 @@ export class ViewWaiterOrderComponent implements OnInit {
     this.router.queryParams.subscribe((params: any) => {
       this.clientName = params.client;
       console.log('CLIENTE ', this.clientName = params.client);
-    })
-    this.connector.$conector.subscribe((valor:any)=>{
-      this.itemBillSwitch = valor;      
     })
       
   }

@@ -1,4 +1,4 @@
-<section class="contItemReceipt" *ngFor="let item of arrOrder">
+<section class="contItemReceipt" *ngFor="let item of arrOrder.flat()">
     <div class="itemDescription">
         <span #itemName class="itemName">{{item.product}}</span>
         <span #itemPrice class="itemPrice">${{item.price}}</span>
