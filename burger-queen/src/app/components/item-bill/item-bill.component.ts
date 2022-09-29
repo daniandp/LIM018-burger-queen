@@ -7,18 +7,18 @@ import { ConnectionServiceService } from 'src/app/connection-service.service';
   styleUrls: ['./item-bill.component.css']
 })
 export class ItemBillComponent implements OnInit {
+  arrOrder: Array<any> = [];
   @ViewChild('itemName') itName!: ElementRef;
   @ViewChild('itemPrice') itPrice!: ElementRef;
 
-  constructor(private getItemMenu: ConnectionServiceService) { }
+  constructor(private connector: ConnectionServiceService) { }
 
   ngOnInit(): void {
-    this.getItemMenu.$conector.subscribe((valor:any) => {
-  this.itName.nativeElement.textContent = valor.product;
+    this.connector.$conector.subscribe((valor: any) => {
+      this.arrOrder = valor;
+      console.log(this.arrOrder, 'DATH');
+          
     })
-    this.getItemMenu.$conector.subscribe((valor:any) => {
-      this.itPrice.nativeElement.textContent = valor.price;
-        }) 
   }
 
 }

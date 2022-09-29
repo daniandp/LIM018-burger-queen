@@ -12,21 +12,33 @@ export class ItemMenuComponent implements OnInit {
   @ViewChild('product') productName!: ElementRef;
   @ViewChild('price') priceTag!: ElementRef;
   itemBillSwitch: boolean = false;
+  arrOrder: Array<any> = [];
   constructor(private connector: ConnectionServiceService) { }
 
   ngOnInit(): void { }
   
   getElemMenu(param: any) {
-    console.log(param);
-    
     const itemsMenu = {
       product : param.product,
       price: param.price,
-      itemBill: true,
-    }
-    this.connector.$conector.emit(itemsMenu)
-   
+      cont: 1
+    }    
+    this.addItem(param);
+  }
 
-    
+  addItem(itemsMenu: any){
+    if(this.arrOrder.some((elem) => elem.product === itemsMenu.product)) {
+      this.arrOrder = this.arrOrder.map((elem) => {
+        if (elem.product === itemsMenu.product) {
+          elem.cont += 1;
+          return elem;
+        }
+        return elem;
+      });
+    } else {
+      this.arrOrder.push({...itemsMenu, cont: 1 });
+    }
+    console.log(this.arrOrder, 'LA TORRE INCLINADA DE LAS AREPAS');
+    this.connector.$conector.emit(this.arrOrder);
   }
 }

@@ -1,90 +1,15 @@
-<section class="contItemReceipt">
+<section class="contItemReceipt" *ngFor="let item of arrOrder">
     <div class="itemDescription">
-        <span #itemName class="itemName">{{itemName.textContent}}</span>
-        <span #itemPrice class="itemPrice">{{itemPrice.textContent}}</span>
+        <span #itemName class="itemName">{{item.product}}</span>
+        <span #itemPrice class="itemPrice">${{item.price}}</span>
     </div>
     <div class="contCounter">
         <button type="button" id="removeItem" class="btnRemove">
             <img class="iconsCounter" src="https://cdn-icons-png.flaticon.com/512/232/232445.png" alt="remove-item">
         </button>
-        <span class="totalItems">1</span>
+        <span class="totalItems">{{item.cont}}</span>
         <button type="button" id="addItem" class="btnAdd">
             <img class="iconsCounter" src="https://cdn-icons-png.flaticon.com/512/1828/1828575.png" alt="add-item">
         </button>
     </div>
 </section>
-<!-- <section class="contItemReceipt">
-    <div class="itemDescription">
-        <span class="itemName">Hamburguesa/ Simple/ Pollo/ Queso/ Huevo</span>
-        <span class="itemPrice">12$</span>
-    </div>
-    <div class="contCounter">
-        <button type="button" id="removeItem" class="btnRemove">
-            <img class="iconsCounter" src="https://cdn-icons-png.flaticon.com/512/232/232445.png" alt="remove-item">
-        </button>
-        <span class="totalItems">1</span>
-        <button type="button" id="addItem" class="btnAdd">
-            <img class="iconsCounter" src="https://cdn-icons-png.flaticon.com/512/1828/1828575.png" alt="add-item">
-        </button>
-    </div>
-</section>
-<section class="contItemReceipt">
-    <div class="itemDescription">
-        <span class="itemName">Hamburguesa/ Simple/ Pollo/ Queso/ Huevo</span>
-        <span class="itemPrice">12$</span>
-    </div>
-    <div class="contCounter">
-        <button type="button" id="removeItem" class="btnRemove">
-            <img class="iconsCounter" src="https://cdn-icons-png.flaticon.com/512/232/232445.png" alt="remove-item">
-        </button>
-        <span class="totalItems">1</span>
-        <button type="button" id="addItem" class="btnAdd">
-            <img class="iconsCounter" src="https://cdn-icons-png.flaticon.com/512/1828/1828575.png" alt="add-item">
-        </button>
-    </div>
-</section>
-<section class="contItemReceipt">
-    <div class="itemDescription">
-        <span class="itemName">Hamburguesa/ Simple/ Pollo/ Queso/ Huevo</span>
-        <span class="itemPrice">12$</span>
-    </div>
-    <div class="contCounter">
-        <button type="button" id="removeItem" class="btnRemove">
-            <img class="iconsCounter" src="https://cdn-icons-png.flaticon.com/512/232/232445.png" alt="remove-item">
-        </button>
-        <span class="totalItems">1</span>
-        <button type="button" id="addItem" class="btnAdd">
-            <img class="iconsCounter" src="https://cdn-icons-png.flaticon.com/512/1828/1828575.png" alt="add-item">
-        </button>
-    </div>
-</section>
-<section class="contItemReceipt">
-    <div class="itemDescription">
-        <span class="itemName">Hamburguesa/ Simple/ Pollo/ Queso/ Huevo</span>
-        <span class="itemPrice">12$</span>
-    </div>
-    <div class="contCounter">
-        <button type="button" id="removeItem" class="btnRemove">
-            <img class="iconsCounter" src="https://cdn-icons-png.flaticon.com/512/232/232445.png" alt="remove-item">
-        </button>
-        <span class="totalItems">1</span>
-        <button type="button" id="addItem" class="btnAdd">
-            <img class="iconsCounter" src="https://cdn-icons-png.flaticon.com/512/1828/1828575.png" alt="add-item">
-        </button>
-    </div>
-</section>
-<section class="contItemReceipt">
-    <div class="itemDescription">
-        <span class="itemName">Hamburguesa/ Simple/ Pollo/ Queso/ Huevo</span>
-        <span class="itemPrice">12$</span>
-    </div>
-    <div class="contCounter">
-        <button type="button" id="removeItem" class="btnRemove">
-            <img class="iconsCounter" src="https://cdn-icons-png.flaticon.com/512/232/232445.png" alt="remove-item">
-        </button>
-        <span class="totalItems">1</span>
-        <button type="button" id="addItem" class="btnAdd">
-            <img class="iconsCounter" src="https://cdn-icons-png.flaticon.com/512/1828/1828575.png" alt="add-item">
-        </button>
-    </div>
-</section> -->

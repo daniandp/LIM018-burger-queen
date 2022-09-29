@@ -27,9 +27,7 @@ export class ViewWaiterOrderComponent implements OnInit {
       console.log('CLIENTE ', this.clientName = params.client);
     })
     this.connector.$conector.subscribe((valor:any)=>{
-      this.itemBillSwitch = valor;
-      // console.log(valor);
-      
+      this.itemBillSwitch = valor;      
     })
       
   }

@@ -11,13 +11,14 @@ import DataMenu from 'src/assets/menu.json';
 export class ItemMenuLunchAndDinnerComponent implements OnInit {
   Menu: any = DataMenu;
   modalSwitch: boolean = false;
+  arrOrder: Array<any> = [];
   
-  constructor(private showModal: ConnectionServiceService) { }
+  constructor(private connector: ConnectionServiceService) { }
   
   ngOnInit(): void { 
 
-    this.showModal.$conector.subscribe((valor:any) => {
-      this.modalSwitch = valor;
+    this.connector.$conector.subscribe((valor:any) => {
+      this.modalSwitch = valor.statusModal;
     })
 
   }
@@ -25,7 +26,5 @@ export class ItemMenuLunchAndDinnerComponent implements OnInit {
     if (param.product.startsWith('Hamburguesa')) {
       this.modalSwitch = true;
     }
-    console.log(this.modalSwitch);
   }
-
   }
