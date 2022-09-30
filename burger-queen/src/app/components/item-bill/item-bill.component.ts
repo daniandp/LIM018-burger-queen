@@ -10,6 +10,8 @@ export class ItemBillComponent implements OnInit {
   /* arrOrderBreakfast: Array<any> = [];
   arrOrderLunchAndDinner: Array<any> = []; */
   arrOrder: Array<any> = [];
+  arrBreakfast: Array<any> = [];
+  arrLunchAndDinner: Array<any> = [];
   @ViewChild('itemName') itName!: ElementRef;
   @ViewChild('itemPrice') itPrice!: ElementRef;
 
@@ -19,6 +21,8 @@ export class ItemBillComponent implements OnInit {
     this.connector.$conector.subscribe((valor: any) => {
       this.arrOrder = valor;
     })
-  }
-
+    this.connector.$lunchAndDinner.subscribe((valor: any) => {
+      this.arrOrder = valor;
+    });
+   }
 }

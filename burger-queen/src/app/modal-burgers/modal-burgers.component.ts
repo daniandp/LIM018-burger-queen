@@ -11,27 +11,25 @@ export class ModalBurgersComponent implements OnInit {
   @ViewChild('selectType') select!: ElementRef;
   @ViewChild('addCheese') cheese!: ElementRef;
   @ViewChild('addEgg') egg!: ElementRef;
-  //burgerOptions: object = {};
+  burgerOptions: object = {};
+  statusModal: boolean = false;
 
-  ngOnInit(): void {
-    /* this.connector.$modal.emit('HOLA'); */
-   }
+  ngOnInit(): void { }
   
-/*   burgerOptions: object = {
-    product: this.select.nativeElement.value,
-    egg: this.egg.nativeElement.value,
-    cheese: this.cheese.nativeElement.value,
-    statusModal: false
-  }
-   */
+
   closeModal() {
-    const burgerOptions: Object = {
-      product: this.select.nativeElement.value,
-      egg: this.egg.nativeElement.value,
-      cheese: this.cheese.nativeElement.value,
-      statusModal: false
+    if(this.select.nativeElement.value === 'unselect') {
+      this.statusModal = true;
+    } else {
+      this.statusModal = false;
     }
-    this.connector.$modal.emit(burgerOptions);
+    this.burgerOptions = {
+      product: this.select.nativeElement.value,
+      egg: this.egg.nativeElement.checked,
+      cheese: this.cheese.nativeElement.checked,
+      statusModal: this.statusModal
+    }
+    this.connector.$modal.emit(this.burgerOptions);        
   }
   // REVISAR CONEXIÓN DEL BURGER OPTIONS  
 

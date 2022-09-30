@@ -24,12 +24,12 @@
                 </div>
                     <div class="contOptions">
                         <label for="optionCheese">
-                            <input #addCheese type="radio" value="cheese" id="optionCheese">
+                            <input #addCheese type="checkbox" value="cheese" id="optionCheese">
                             QUESO 
                             <img src="https://cdn-icons-png.flaticon.com/512/883/883514.png" alt="icono de queso">
                         </label>
                         <label for="optionEgg">
-                            <input #addEgg type="radio" value="egg" id="optionEgg">
+                            <input #addEgg type="checkbox" value="egg" id="optionEgg">
                             HUEVO
                             <img src="https://cdn-icons-png.flaticon.com/512/817/817324.png" alt="icono de huevo">
                         </label>
@@ -38,6 +38,7 @@
             <div class="contBtnAcept">
                 <button type="button" class="btn" (click)="closeModal()">ACEPTAR</button>
             </div>
+            <div *ngIf="selectType.value === 'unselect'">ELIGE EL TIPO DE HAMBURGUESA</div>
         </div>
     </div>
 </section>
