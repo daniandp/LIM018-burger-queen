@@ -22,7 +22,7 @@ export class ItemMenuComponent implements OnInit {
   }
 
   addItem(itemsMenu: any) {
-/*     if(this.arrOrder.some((elem) => elem.product === itemsMenu.product)) {
+    if(this.arrOrder.some((elem) => elem.product === itemsMenu.product)) {
       this.arrOrder = this.arrOrder.map((elem) => {
         if (elem.product === itemsMenu.product) {
           elem.cont += 1;
@@ -30,9 +30,9 @@ export class ItemMenuComponent implements OnInit {
         }
         return elem;
       });
-    } else { */
+    } else {
       this.arrOrder.push({...itemsMenu, cont: 1 });
-    //}
+    }
     console.log(this.arrOrder, 'LA TORRE INCLINADA DE LAS AREPAS');
   }
 }

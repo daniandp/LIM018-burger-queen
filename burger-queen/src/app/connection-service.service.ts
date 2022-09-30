@@ -14,6 +14,7 @@ export class ConnectionServiceService {
   }
 
   $conector = new EventEmitter<any>();
+  $modal = new EventEmitter<any>();
 
 
 }

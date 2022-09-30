@@ -17,29 +17,37 @@ export class ItemMenuLunchAndDinnerComponent implements OnInit {
   constructor(private connector: ConnectionServiceService) { }
   
   ngOnInit(): void { 
-    this.connector.$conector.subscribe((valor:any) => {
-      this.modalSwitch = valor.statusModal;
+    this.connector.$modal.subscribe((valor:any) => {
       this.burgerOptions = valor;
-    })
-
+      this.modalSwitch = valor.statusModal;  
+      console.log(valor, 'VALOR MODAL');
+    })   
   }
 
+  /* ngAfterViewInit(): void {
+    this.connector.$conector.subscribe((valor) => {
+      this.burgerOptions = valor;
+      this.modalSwitch = valor.statusModal;  
+      console.log(valor, 'VALOR MODAL');
+    })   
+  } */
+
   getElemMenu(param: any) { 
-    this.addItem(param);
-    console.log(this.arrOrder, 'ARRAAAAAAY ORDER');
-    
+    this.modalSwitch = param.product.startsWith('Hamburguesa')
+    if (this.modalSwitch === true) {
+      this.addItem(param);
+    }
     this.connector.$conector.emit(this.arrOrder);
   }
   
-  openModal(param: any) {
+ /*  openModal(param: any) {    
     if (param.product.startsWith('Hamburguesa')) {
       this.modalSwitch = true;
     }
-  }
-
+  } */
 
   addItem(itemsMenu: any) {
-  /*   if(this.arrOrder.some((elem) => elem.product === itemsMenu.product)) {
+    if(this.arrOrder.some((elem) => elem.product === itemsMenu.product)) {
       this.arrOrder = this.arrOrder.map((elem) => {
         if (elem.product === itemsMenu.product) {
           elem.cont += 1;
@@ -47,10 +55,10 @@ export class ItemMenuLunchAndDinnerComponent implements OnInit {
         }
         return elem;
       });
-    } else { */
+    } else {
       this.arrOrder.push({...itemsMenu, cont: 1 });
-    /* }
-    console.log(this.arrOrder, 'LA TORRE INCLINADA DE LAS AREPAS'); */
+    }
+    console.log(this.arrOrder, 'LA TORRE INCLINADA DE LAS AREPAS');
   }
 
   }
