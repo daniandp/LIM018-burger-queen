@@ -14,45 +14,62 @@ export class ItemMenuLunchAndDinnerComponent implements OnInit {
   modalSwitch: boolean = false;
   arrOrder: Array<any> = [];
   burgerOptions: any;
+  newBurger: any;
   
   constructor(private connector: ConnectionServiceService) { }
   
   ngOnInit(): void { 
+      
+  }
+
+  getElemMenu(param: any) { 
     this.connector.$modal.subscribe((valor:any) => {
       this.burgerOptions = valor;
       this.modalSwitch = valor.statusModal;
+      console.log(valor, 'LOG DE VALOR 24 MENULND');
+      // this.addItem(valor);
       // if(this.burgerOptions.product !== 'unselect') {
       //   console.log(this.burgerOptions, 'VALOR MODAL');
       //   this.arrOrder.push({
       //     product: this.burgerOptions.product + ' ' + this.arrOrder.product
       //   })
       // }
-    })   
+    }) 
+    this.modalSwitch = param.product.startsWith('Hamburguesa')
+      this.manageOrder(param);
+    this.connector.$lunchAndDinner.emit(this.arrOrder);
   }
 
-  getElemMenu(param: any) { 
-    this.modalSwitch = param.product.startsWith('Hamburguesa')
-      this.addItem(param);
-    this.connector.$lunchAndDinner.emit(this.arrOrder);
+  manageOrder(itemsMenu: any) {
+    if(itemsMenu.product.startsWith('Hamburguesa')) {
+      this.newBurger = {
+        product: itemsMenu.product /* + ' ' + this.burgerOptions.product */,
+        price: itemsMenu.price,
+        cont: 1,
+      }
+      this.addItem(this.newBurger);
+      console.log(this.newBurger, 'MENULND LINEA 44');
+    } else {
+      this.addItem(itemsMenu);
+    }
   }
   
   addItem(itemsMenu: any) {
-    if(itemsMenu.product.startsWith('Hamburguesa')) {
-      console.log('PAPAS FRITAS POR QUE SI');
-      
-    }
-    if(this.arrOrder.some((elem) => elem.product === itemsMenu.product)) {
-      this.arrOrder = this.arrOrder.map((elem) => {
-        if (elem.product === itemsMenu.product) {
-          elem.cont += 1;
+    if(!itemsMenu.product.startsWith('Hamburguesa')) {
+      if(this.arrOrder.some((elem) => elem.product === itemsMenu.product)) {
+        this.arrOrder = this.arrOrder.map((elem) => {
+          if (elem.product === itemsMenu.product) {
+            elem.cont += 1;
+            return elem;
+          }
           return elem;
-        }
-        return elem;
-      });
+        });
+      } else {
+        this.arrOrder.push({...itemsMenu, cont: 1 });
+      }
     } else {
-      this.arrOrder.push({...itemsMenu, cont: 1 });
+      this.connector.$lunchAndDinner.emit(itemsMenu);
     }
-    console.log(this.arrOrder, 'LA TORRE INCLINADA DE LAS AREPAS');
   }
   }
   // LOGICA 1:

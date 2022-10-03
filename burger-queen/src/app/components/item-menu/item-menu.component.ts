@@ -33,6 +33,5 @@ export class ItemMenuComponent implements OnInit {
     } else {
       this.arrOrder.push({...itemsMenu, cont: 1 });
     }
-    console.log(this.arrOrder, 'LA TORRE INCLINADA DE LAS AREPAS');
   }
 }
