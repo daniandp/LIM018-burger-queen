@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ConnectionServiceService } from 'src/app/connection-service.service';
 import DataMenu from 'src/assets/menu.json';
 import { __param } from 'tslib';
@@ -10,48 +10,27 @@ import { __param } from 'tslib';
   styleUrls: ['./item-menu-lunch-and-dinner.component.css']
 })
 export class ItemMenuLunchAndDinnerComponent implements OnInit {
+  @ViewChild('selectType') select!: ElementRef;
+  @ViewChild('addCheese') cheese!: ElementRef;
+  @ViewChild('addEgg') egg!: ElementRef;
+  @ViewChild('btnAceptModal') btnModal!: ElementRef;
   Menu: any = DataMenu;
   modalSwitch: boolean = false;
   arrOrder: Array<any> = [];
   burgerOptions: any;
   newBurger: any;
+  selectValue: undefined;
   
   constructor(private connector: ConnectionServiceService) { }
   
-  ngOnInit(): void { 
-      
-  }
-
+  ngOnInit(): void { }
+  
   getElemMenu(param: any) { 
-    this.connector.$modal.subscribe((valor:any) => {
-      this.burgerOptions = valor;
-      this.modalSwitch = valor.statusModal;
-      console.log(valor, 'LOG DE VALOR 24 MENULND');
-      // this.addItem(valor);
-      // if(this.burgerOptions.product !== 'unselect') {
-      //   console.log(this.burgerOptions, 'VALOR MODAL');
-      //   this.arrOrder.push({
-      //     product: this.burgerOptions.product + ' ' + this.arrOrder.product
-      //   })
-      // }
-    }) 
-    this.modalSwitch = param.product.startsWith('Hamburguesa')
-      this.manageOrder(param);
+    if (param.product.startsWith('Hamburguesa')) {
+      this.modalSwitch = true;
+     }
+      //this.manageOrder(param);
     this.connector.$lunchAndDinner.emit(this.arrOrder);
-  }
-
-  manageOrder(itemsMenu: any) {
-    if(itemsMenu.product.startsWith('Hamburguesa')) {
-      this.newBurger = {
-        product: itemsMenu.product /* + ' ' + this.burgerOptions.product */,
-        price: itemsMenu.price,
-        cont: 1,
-      }
-      this.addItem(this.newBurger);
-      console.log(this.newBurger, 'MENULND LINEA 44');
-    } else {
-      this.addItem(itemsMenu);
-    }
   }
   
   addItem(itemsMenu: any) {
@@ -71,6 +50,46 @@ export class ItemMenuLunchAndDinnerComponent implements OnInit {
       this.connector.$lunchAndDinner.emit(itemsMenu);
     }
   }
+
+  changeSelectValue(event: any) {
+    this.selectValue = event.target.value;
+  }
+
+  closeModal() {    
+    console.log(this.selectValue, 'CONSTANTE SELECT VALUE');
+    
+    if(this.selectValue === undefined) {
+      this.modalSwitch = true;
+    } else {
+      this.modalSwitch = false;
+      this.selectValue = undefined; //AQUI HAY UN ERROOOOOOOOOOOOOOOOOR
+    }
+    this.burgerOptions = {
+      product: this.selectValue, // EL VALOR LLEGA UNDEFINED PORQUE SE LO ESTOY ASIGNANDO EN EL ELSE DE ARRIBA, LINEA 65
+      egg: this.egg.nativeElement.checked,
+      cheese: this.cheese.nativeElement.checked,
+      statusModal: this.modalSwitch
+    }
+    console.log(this.selectValue, 'SELECT VALUE doooos'); // EL VALOR LLEGA UNDEFINED PORQUE SE LO ESTOY ASIGNANDO EN EL ELSE DE ARRIBA, LINEA 65
+    console.log(this.burgerOptions.product, 'producto');
+    console.log(this.modalSwitch, ' status modallll');
+  }
+
+  // manageOrder(itemsMenu: any) {
+  //   if (itemsMenu.product.startsWith('Hamburguesa')) {
+  //     this.modalSwitch = true;
+  //     this.newBurger = {
+  //       product: itemsMenu.product /* + ' ' + this.burgerOptions.product */,
+  //       price: itemsMenu.price,
+  //       cont: 1,
+  //     }
+  //     this.addItem(this.newBurger);
+  //     console.log(this.newBurger, 'MENULND LINEA 44');
+  //   } else {
+  //     this.addItem(itemsMenu);
+  //   }
+  // }
+
   }
   // LOGICA 1:
   //traiga item menu (producto precio y cantidad)

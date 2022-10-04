@@ -16,7 +16,6 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { ItemMenuLunchAndDinnerComponent } from './components/item-menu/item-menu-lunch-and-dinner/item-menu-lunch-and-dinner.component';
-import { ModalBurgersComponent } from './modal-burgers/modal-burgers.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +29,6 @@ import { ModalBurgersComponent } from './modal-burgers/modal-burgers.component';
     ContainerTicketsComponent,
     TicketOrderComponent,
     ItemMenuLunchAndDinnerComponent,
-    ModalBurgersComponent,
   ],
   imports: [
     BrowserModule,
