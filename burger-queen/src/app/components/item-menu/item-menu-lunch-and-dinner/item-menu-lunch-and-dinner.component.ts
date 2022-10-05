@@ -18,7 +18,13 @@ export class ItemMenuLunchAndDinnerComponent implements OnInit {
   modalSwitch: boolean = false;
   arrOrder: Array<any> = [];
   burgerOptions: any;
-  newBurger: any;
+  
+   newBurger: object =  {
+    product: "",
+    price: 0,
+    cont: 0
+
+  };
   selectValue: undefined;
   
   constructor(private connector: ConnectionServiceService) { }
@@ -28,6 +34,8 @@ export class ItemMenuLunchAndDinnerComponent implements OnInit {
   getElemMenu(param: any) { 
     if (param.product.startsWith('Hamburguesa')) {
       this.modalSwitch = true;
+      this.burgerOptions = param;
+      console.log(this.burgerOptions,"soy burgerOptions!!!" )
      }
       //this.manageOrder(param);
     this.connector.$lunchAndDinner.emit(this.arrOrder);
@@ -55,24 +63,35 @@ export class ItemMenuLunchAndDinnerComponent implements OnInit {
     this.selectValue = event.target.value;
   }
 
-  closeModal() {    
-    console.log(this.selectValue, 'CONSTANTE SELECT VALUE');
+  closeModal(itemsMenu: any) {   
+    console.log(itemsMenu, "soy itemsmenu") 
+    //console.log(this.selectValue, 'CONSTANTE SELECT VALUE');
     
     if(this.selectValue === undefined) {
       this.modalSwitch = true;
     } else {
       this.modalSwitch = false;
-      this.selectValue = undefined; //AQUI HAY UN ERROOOOOOOOOOOOOOOOOR
+      //this.selectValue = undefined; //AQUI HAY UN ERROOOOOOOOOOOOOOOOOR
     }
+
+    if(this.selectValue === "vegan") {
+     const prueba = this.burgerOptions.product + " vegana"
+     //console.log(this.newBurger, 'producto 75!!!!!! ');
+     console.log(prueba, "soy burgerOptions")
+    }
+   
+    /*
     this.burgerOptions = {
       product: this.selectValue, // EL VALOR LLEGA UNDEFINED PORQUE SE LO ESTOY ASIGNANDO EN EL ELSE DE ARRIBA, LINEA 65
       egg: this.egg.nativeElement.checked,
       cheese: this.cheese.nativeElement.checked,
       statusModal: this.modalSwitch
     }
+   
     console.log(this.selectValue, 'SELECT VALUE doooos'); // EL VALOR LLEGA UNDEFINED PORQUE SE LO ESTOY ASIGNANDO EN EL ELSE DE ARRIBA, LINEA 65
     console.log(this.burgerOptions.product, 'producto');
     console.log(this.modalSwitch, ' status modallll');
+    */
   }
 
   // manageOrder(itemsMenu: any) {
