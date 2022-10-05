@@ -20,6 +20,8 @@ export class ItemBillComponent implements OnInit {
   ngOnInit(): void {
     this.connector.$conector.subscribe((valor: any) => {
       this.arrOrder = valor;
+      console.log(this.arrOrder, 'array order');
+      
     })
     this.connector.$lunchAndDinner.subscribe((valor: any) => {
       this.arrOrder = valor;
