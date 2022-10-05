@@ -18,13 +18,9 @@ export class ItemMenuLunchAndDinnerComponent implements OnInit {
   modalSwitch: boolean = false;
   arrOrder: Array<any> = [];
   burgerOptions: any;
-  
-   newBurger: object =  {
-    product: "",
-    price: 0,
-    cont: 0
+  newBurger: any;
 
-  };
+   
   selectValue: undefined;
   
   constructor(private connector: ConnectionServiceService) { }
@@ -75,9 +71,9 @@ export class ItemMenuLunchAndDinnerComponent implements OnInit {
     }
 
     if(this.selectValue === "vegan") {
-     const prueba = this.burgerOptions.product + " vegana"
+      this.newBurger.product = this.burgerOptions.product + " vegana" ;
      //console.log(this.newBurger, 'producto 75!!!!!! ');
-     console.log(prueba, "soy burgerOptions")
+     console.log(this.newBurger, "soy burgerOptions")
     }
    
     /*
