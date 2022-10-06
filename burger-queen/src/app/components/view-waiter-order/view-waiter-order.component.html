@@ -7,11 +7,11 @@
         </div>
         <div class="contFoodOptions">
             <div class="menuBreakfast" *ngIf="breakfastSwitch">
-                <app-item-menu></app-item-menu>
+                <app-item-menu></app-item-menu> <!-- Muestra el menú de desayuno si breakfastSwitch es true -->
             </div>
 
             <div class="menuLunchAndDinner" *ngIf="lunchAndDinnerSwitch">
-                <app-item-menu-lunch-and-dinner></app-item-menu-lunch-and-dinner>
+                <app-item-menu-lunch-and-dinner></app-item-menu-lunch-and-dinner> <!-- Muestra el menú de desayuno si lunchAndDinnerSwitch es true -->
             </div>
         </div>
     </section>

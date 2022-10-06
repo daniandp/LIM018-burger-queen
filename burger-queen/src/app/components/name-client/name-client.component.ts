@@ -12,8 +12,8 @@ export class NameClientComponent implements OnInit {
   constructor(private router: Router) { }
 
   changeViewWaiter() {
+    // Cambio de ruta y capturamos el nombre del cliente
     this.router.navigate(['/menuWaiter'], {queryParams: {client: this.clientName}})
-    // console.log(this.Menu.breakfast, 'VISTA DEL QUE');
       }
 
   ngOnInit(): void { }

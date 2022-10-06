@@ -10,19 +10,11 @@ export class HeaderWaiterComponent implements OnInit {
  
   constructor(private router: Router) { }
   
+  // retorna la ruta a welcome
   returnToWelcome() {
     this.router.navigate(['/welcome']);
-
   }
 
-  getNameClient() {
-    const nameClient = document.querySelector('#nameClient') as HTMLInputElement;
-    console.log(nameClient);
-    
-  }
-
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void { }
 
 }
