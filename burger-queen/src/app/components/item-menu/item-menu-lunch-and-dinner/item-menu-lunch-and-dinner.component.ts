@@ -1,14 +1,15 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Injectable, Input } from '@angular/core';
 import { ConnectionServiceService } from 'src/app/connection-service.service';
 import DataMenu from 'src/assets/menu.json';
-import { __param } from 'tslib';
-
+import { newBurger } from '../../models/newBurger';
 
 @Component({
   selector: 'app-item-menu-lunch-and-dinner',
   templateUrl: './item-menu-lunch-and-dinner.component.html',
   styleUrls: ['./item-menu-lunch-and-dinner.component.css']
 })
+
+
 export class ItemMenuLunchAndDinnerComponent implements OnInit {
   @ViewChild('selectType') select!: ElementRef;
   @ViewChild('addCheese') cheese!: ElementRef;
@@ -18,113 +19,107 @@ export class ItemMenuLunchAndDinnerComponent implements OnInit {
   modalSwitch: boolean = false;
   arrOrder: Array<any> = [];
   burgerOptions: any;
-  newBurger: any;
-
-   
   selectValue: undefined;
-  
+  cheeseValue: string = '';
+  eggValue: string = '';
+  hamburger: any;
+
   constructor(private connector: ConnectionServiceService) { }
-  
+
   ngOnInit(): void { }
-  
-  getElemMenu(param: any) { 
+
+  getElemMenu(param: any) {
     if (param.product.startsWith('Hamburguesa')) {
       this.modalSwitch = true;
       this.burgerOptions = param;
-      console.log(this.burgerOptions,"soy burgerOptions!!!" )
-     }
-      //this.manageOrder(param);
+      console.log(this.burgerOptions, "soy burgerOptions!!!")
+      this.selectValue = undefined;
+    } else {
+      this.addItem(param);
+    }
+    // this.manageOrder(param);
     this.connector.$lunchAndDinner.emit(this.arrOrder);
   }
-  
+
   addItem(itemsMenu: any) {
-    if(!itemsMenu.product.startsWith('Hamburguesa')) {
-      if(this.arrOrder.some((elem) => elem.product === itemsMenu.product)) {
-        this.arrOrder = this.arrOrder.map((elem) => {
-          if (elem.product === itemsMenu.product) {
-            elem.cont += 1;
-            return elem;
-          }
+    if (this.arrOrder.some((elem) => elem.product === itemsMenu.product)) {
+      this.arrOrder = this.arrOrder.map((elem) => {
+        if (elem.product === itemsMenu.product) {
+          elem.cont += 1;
           return elem;
-        });
-      } else {
-        this.arrOrder.push({...itemsMenu, cont: 1 });
-      }
+        }
+        return elem;
+      });
     } else {
-      this.connector.$lunchAndDinner.emit(itemsMenu);
+      this.arrOrder.push({ ...itemsMenu, cont: 1 });
     }
+    this.connector.$lunchAndDinner.emit(itemsMenu);
   }
 
   changeSelectValue(event: any) {
     this.selectValue = event.target.value;
   }
 
-  closeModal(itemsMenu: any) {   
-    console.log(itemsMenu, "soy itemsmenu") 
-    //console.log(this.selectValue, 'CONSTANTE SELECT VALUE');
-    
-    if(this.selectValue === undefined) {
+  changeCheckboxCheese(event: any) {
+    this.cheeseValue = event.target.checked;
+  }
+
+  changeCheckboxEgg(event: any) {
+    this.eggValue = event.target.checked;
+  }
+
+  closeModal(itemsMenu: any) {
+    console.log(itemsMenu, "soy itemsmenu")
+
+    if (this.selectValue === undefined) {
       this.modalSwitch = true;
     } else {
       this.modalSwitch = false;
-      //this.selectValue = undefined; //AQUI HAY UN ERROOOOOOOOOOOOOOOOOR
     }
 
-    if(this.selectValue === "vegan") {
-      this.newBurger.product = this.burgerOptions.product + " vegana" ;
-     //console.log(this.newBurger, 'producto 75!!!!!! ');
-     console.log(this.newBurger, "soy burgerOptions")
+    if (this.cheeseValue && !this.eggValue) {
+      this.hamburger = new newBurger(
+        this.burgerOptions.product + ' de ' + this.selectValue + ' + Queso',
+        this.burgerOptions.price + 1,
+        1
+      )
+      console.log(this.hamburger, "soy burgerOptions HAMBURGUESA CON QUESO");
+
+    } else if (this.eggValue && !this.cheeseValue) {
+      this.hamburger = new newBurger(
+        this.burgerOptions.product + ' de ' + this.selectValue + ' + Huevo',
+        this.burgerOptions.price + 1,
+        1
+      )
+      console.log(this.hamburger, "soy burgerOptions HAMBURGUESA CON HUEVOOOOOOO");
+
+    } else if (this.cheeseValue && this.eggValue) {
+      this.hamburger = new newBurger(
+        this.burgerOptions.product + ' de ' + this.selectValue + ' + Queso + Huevo',
+        this.burgerOptions.price + 2,
+        1
+      )
+      console.log(this.hamburger, "soy burgerOptions HAMBURGUESA CON HUEVOOOOOOO y quesooooooo");
+    } else {
+      this.hamburger = new newBurger(
+        this.burgerOptions.product + ' de ' + this.selectValue,
+        this.burgerOptions.price,
+        1
+      )
+      this.addItem(this.hamburger);
+      console.log(this.hamburger, "soy burgerOptions HAMBURGUESA SIN ADD");
     }
-   
-    /*
-    this.burgerOptions = {
-      product: this.selectValue, // EL VALOR LLEGA UNDEFINED PORQUE SE LO ESTOY ASIGNANDO EN EL ELSE DE ARRIBA, LINEA 65
-      egg: this.egg.nativeElement.checked,
-      cheese: this.cheese.nativeElement.checked,
-      statusModal: this.modalSwitch
-    }
-   
-    console.log(this.selectValue, 'SELECT VALUE doooos'); // EL VALOR LLEGA UNDEFINED PORQUE SE LO ESTOY ASIGNANDO EN EL ELSE DE ARRIBA, LINEA 65
-    console.log(this.burgerOptions.product, 'producto');
-    console.log(this.modalSwitch, ' status modallll');
-    */
+
   }
 
-  // manageOrder(itemsMenu: any) {
-  //   if (itemsMenu.product.startsWith('Hamburguesa')) {
-  //     this.modalSwitch = true;
-  //     this.newBurger = {
-  //       product: itemsMenu.product /* + ' ' + this.burgerOptions.product */,
-  //       price: itemsMenu.price,
-  //       cont: 1,
-  //     }
-  //     this.addItem(this.newBurger);
-  //     console.log(this.newBurger, 'MENULND LINEA 44');
-  //   } else {
-  //     this.addItem(itemsMenu);
-  //   }
-  // }
+  /* manageOrder(itemsMenu: any) {
+    if (itemsMenu.product.startsWith('Hamburguesa')) {
+      this.addItem(this.hamburger);
+      console.log(this.hamburger, 'NEW BURGER');
 
-  }
-  // LOGICA 1:
-  //traiga item menu (producto precio y cantidad)
+    } else {
+      this.addItem(itemsMenu);
+    }
+  } */
 
-  //traiga la info del modal para saber si en caso es hamburguesa simple o doble, el tipo y los adicionales
-
-  //al almacenar en arrOrder debe combinar en producto, lo que trae item menu (hamb simple o doble) + el tipo de hamburguesa
-  //que trae el modal y los adicionales. debería quedar (Hamburguesa Simple, Pollo, Queso, Huevo)
-
-  //el precio debería sumarse si tiene adicionales +1 por cada add
-
-
-  //item menu debe enviar el objeto con la hamburguesa sería {producto: hamburguesa simple, price: 10, cont: 1} 
-  // al modal para que el complete la orden
-
-
-  // LOGICA 2:
-  // el modal debe pedirle al mesero que elija las opciones de la hamburguesa que quiere el cliente, concatenando
-  // en el producto el tipo y el adicional por ejemplo 'product: Hamburguesa Simple, Vegana, Queso, Huevo' y 
-  // debe modificar el precio de acuerdo a la cantidad de adicionales que pida el cliente en el caso de arriba pasaría de 
-  // $10 a $12 (10 precio base, 1 queso, 1 huevo)
-  // luego el modal debe enviar ese objeto al item menu lunch and dinner para que lo agregue al arrOrder que es el que 
-  // se va a mostrar en el viewWaiterOrder
+}

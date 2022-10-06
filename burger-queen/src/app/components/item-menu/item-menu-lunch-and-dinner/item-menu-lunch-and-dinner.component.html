@@ -23,9 +23,9 @@
                     <div class="contListOfTypes">
                     <select #selectType (change)="changeSelectValue($event)" class="listOfTypes">
                         <option disabled value="unselect" selected>SELECCIONAR</option>
-                        <option #veganType value="vegan">VEGANA</option>
-                        <option #beafType value="beaf">CARNE</option>
-                        <option #chickenType value="chicken">POLLO</option>
+                        <option #veganType value="Vegana">VEGANA</option>
+                        <option #beafType value="Carne">CARNE</option>
+                        <option #chickenType value="Pollo">POLLO</option>
                     </select>
                     </div>
                 </div>
@@ -36,12 +36,12 @@
                         </div>
                             <div class="contOptions">
                                 <label for="optionCheese">
-                                    <input #addCheese type="checkbox" value="cheese" id="optionCheese">
+                                    <input (change)="changeCheckboxCheese($event)" #addCheese type="checkbox" value="cheese" id="optionCheese">
                                     QUESO 
                                     <img src="https://cdn-icons-png.flaticon.com/512/883/883514.png" alt="icono de queso">
                                 </label>
                                 <label for="optionEgg">
-                                    <input #addEgg type="checkbox" value="egg" id="optionEgg">
+                                    <input (change)="changeCheckboxEgg($event)" #addEgg type="checkbox" value="egg" id="optionEgg">
                                     HUEVO
                                     <img src="https://cdn-icons-png.flaticon.com/512/817/817324.png" alt="icono de huevo">
                                 </label>
