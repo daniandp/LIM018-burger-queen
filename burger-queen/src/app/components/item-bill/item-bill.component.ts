@@ -18,15 +18,23 @@ export class ItemBillComponent implements OnInit {
   constructor(private connector: ConnectionServiceService) { }
 
   ngOnInit(): void {
+    this.fullOrder()
+   
+  
+   }
+
+   fullOrder(){
     this.connector.$conector.subscribe((valor: any) => {
-      this.arrOrder = valor;
-      console.log(this.arrOrder, 'array order de DESAYUNO');
-      
+      this.arrBreakfast = valor;
+      console.log(this.arrBreakfast, 'array order de DESAYUNO');
+      this.arrOrder = valor.concat(this.arrLunchAndDinner);
+      console.log(this.arrOrder, "arrayOrder DESAYUNO")
     })
     this.connector.$lunchAndDinner.subscribe((valor: any) => {
-      this.arrOrder = valor;
-      console.log(this.arrOrder, 'array order de LUNCH AND DINNER');
-      
+      this.arrLunchAndDinner = valor;
+      console.log(this.arrLunchAndDinner, 'array order de LUNCH AND DINNER');
+      this.arrOrder = valor.concat(this.arrBreakfast);
+      console.log(this.arrOrder, "arrayOrder ALMUERZO")
     });
    }
 }

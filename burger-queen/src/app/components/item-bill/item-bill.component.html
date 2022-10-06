@@ -1,7 +1,7 @@
-<section class="contItemReceipt" *ngFor="let item of arrOrder.flat()">
+<section class="contItemReceipt" *ngFor="let item of arrOrder">
     <div class="itemDescription">
         <span #itemName class="itemName">{{item.product}}</span>
-        <span #itemPrice class="itemPrice">${{item.price}}</span>
+        <span #itemPrice class="itemPrice">${{item.subTotal}}</span>
     </div>
     <div class="contCounter">
         <button type="button" id="removeItem" class="btnRemove">

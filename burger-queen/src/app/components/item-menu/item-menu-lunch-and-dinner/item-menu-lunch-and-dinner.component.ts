@@ -46,14 +46,21 @@ export class ItemMenuLunchAndDinnerComponent implements OnInit {
       this.arrOrder = this.arrOrder.map((elem) => {
         if (elem.product === itemsMenu.product) {
           elem.cont += 1;
+        
           return elem;
         }
+        
+       
         return elem;
       });
     } else {
       this.arrOrder.push({ ...itemsMenu, cont: 1 });
     }
-  }
+    this.arrOrder = this.arrOrder.map((elem) => {
+      elem.subTotal = elem.price * elem.cont;
+      return elem;
+    })
+ } 
 
   // Método para escuchar el cambio de opciones en el select
   changeSelectValue(event: any) {
