@@ -33,5 +33,9 @@ export class ItemMenuComponent implements OnInit {
     } else {
       this.arrOrder.push({...itemsMenu, cont: 1 });
     }
+    this.arrOrder = this.arrOrder.map((elem) => {
+      elem.subTotal = elem.price * elem.cont;
+      return elem;
+    })
   }
 }
