@@ -117,3 +117,13 @@ export class ItemMenuLunchAndDinnerComponent implements OnInit {
     this.eggValue = ''
   }
 }
+
+// COSAS QUE NOS FALTAN
+
+// El total de cada item
+// El total de toda la orden
+// Mezclar los menús
+// Poder agregar items
+// Poder eliminar items
+// Conectar con firebase
+
