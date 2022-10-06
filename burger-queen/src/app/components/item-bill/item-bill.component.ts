@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ConnectionServiceService } from 'src/app/connection-service.service';
 
@@ -18,23 +19,24 @@ export class ItemBillComponent implements OnInit {
   constructor(private connector: ConnectionServiceService) { }
 
   ngOnInit(): void {
-    this.fullOrder()
-   
-  
-   }
-
-   fullOrder(){
     this.connector.$conector.subscribe((valor: any) => {
       this.arrBreakfast = valor;
-      console.log(this.arrBreakfast, 'array order de DESAYUNO');
-      this.arrOrder = valor.concat(this.arrLunchAndDinner);
-      console.log(this.arrOrder, "arrayOrder DESAYUNO")
-    })
+      this.arrOrder = valor;
+      // this.fullOrder();
+      console.log(this.arrLunchAndDinner, 'ALMUERZO EN EL DEDSAYUNO ');
+      console.log(this.arrOrder, 'ARRAY ORDER EN DESAYUNO');
+    })   
     this.connector.$lunchAndDinner.subscribe((valor: any) => {
-      this.arrLunchAndDinner = valor;
-      console.log(this.arrLunchAndDinner, 'array order de LUNCH AND DINNER');
-      this.arrOrder = valor.concat(this.arrBreakfast);
-      console.log(this.arrOrder, "arrayOrder ALMUERZO")
+      this.arrLunchAndDinner= valor;
+      this.arrOrder = valor;
+
+      // this.fullOrder();
+      console.log(this.arrBreakfast, 'DESAYUNO EN EL ALMUERZO');
+      console.log(this.arrOrder, 'ARRAY ORDER EN ALMUERZO');
     });
    }
+  //  fullOrder() {
+  //   this.arrOrder = this.arrBreakfast.flat().concat(this.arrLunchAndDinner.flat());
+  //   console.log(this.arrOrder, 'EL ARRAY ORDER DE FULL ORDER <<<<<<');
+  //  }
 }

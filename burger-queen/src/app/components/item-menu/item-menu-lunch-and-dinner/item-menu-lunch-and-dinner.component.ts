@@ -120,6 +120,7 @@ export class ItemMenuLunchAndDinnerComponent implements OnInit {
     }
     // enviamos el objeto de la hamburguesa a addItem
     this.addItem(this.hamburger);
+    this.connector.$lunchAndDinner.emit(this.arrOrder);
     this.cheeseValue = ''
     this.eggValue = ''
   }
@@ -127,10 +128,10 @@ export class ItemMenuLunchAndDinnerComponent implements OnInit {
 
 // COSAS QUE NOS FALTAN
 
-// El total de cada item
+//// El total de cada item
 // El total de toda la orden
 // Mezclar los menús
-// Poder agregar items
-// Poder eliminar items
+// Poder agregar items +
+// Poder eliminar items -
 // Conectar con firebase
 
