@@ -11,12 +11,13 @@ export class ItemMenuComponent implements OnInit {
   Menu: any = DataMenu;
   @ViewChild('product') productName!: ElementRef;
   @ViewChild('price') priceTag!: ElementRef;
+
   arrOrder: Array<any> = [];
   constructor(private connector: ConnectionServiceService) { }
 
   ngOnInit(): void { }
   
   getElemMenu(param: any) { 
-    this.connector.$conector.emit(param);
+    this.connector.$conector.emit(param); // emitimos cada OBJETO de cada item del menú
   }
 }

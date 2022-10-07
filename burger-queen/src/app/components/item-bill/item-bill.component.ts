@@ -8,31 +8,23 @@ import { ConnectionServiceService } from 'src/app/connection-service.service';
   styleUrls: ['./item-bill.component.css']
 })
 export class ItemBillComponent implements OnInit {
-  /* arrOrderBreakfast: Array<any> = [];
-  arrOrderLunchAndDinner: Array<any> = []; */
   arrOrder: Array<any> = [];
-  arrSubOrder: Array<any> = [];
-  prueba: Array<any> = [];
-  arrBreakfast: Array<any> = [];
-  arrLunchAndDinner: Array<any> = [];
   @ViewChild('itemName') itName!: ElementRef;
   @ViewChild('itemPrice') itPrice!: ElementRef;
+  @ViewChild('removeItem') btnRemove!: ElementRef;
+  @ViewChild('addItem') btnAdd!: ElementRef;
 
   constructor(private connector: ConnectionServiceService) { }
 
   ngOnInit(): void {
     this.connector.$conector.subscribe((valor: any) => {
-      this.addItem(valor);
-      // console.log(this.arrLunchAndDinner, 'ALMUERZO EN EL DEDSAYUNO ');
-      // console.log(this.arrOrder, 'ARRAY ORDER EN DESAYUNO');
-    })   
+      this.addItem(valor); // nos suscribimos y traemos el OBJETO de cada item del menú desayuno
+    })
     this.connector.$lunchAndDinner.subscribe((valor: any) => {
-      this.addItem(valor);
-      // console.log(this.arrBreakfast, 'DESAYUNO EN EL ALMUERZO');
-      // console.log(this.arrOrder, 'ARRAY ORDER EN ALMUERZO');
+      this.addItem(valor); // nos suscribimos y traemos el OBJETO de cada item del menú almuerzo y cena
     });
-   }
-     // Método para llenar el array de la orden, si 2 items se repiten los suma en el contador
+  }
+  // Método para llenar el array de la orden, si 2 items se repiten los suma en el contador
   addItem(itemsMenu: any) {
     if (this.arrOrder.some((elem) => elem.product === itemsMenu.product)) {
       this.arrOrder = this.arrOrder.map((elem) => {
@@ -51,12 +43,22 @@ export class ItemBillComponent implements OnInit {
       return elem;
     })
     console.log(this.arrOrder, 'CONSOLE DE ARRAY ORDER EN ITEMBILL');
- } 
+  }
+  
+  restItems(itemsMenu: any) {
+    itemsMenu.cont -= 1;
+    itemsMenu.subTotal = itemsMenu.price * itemsMenu.cont
+    if (itemsMenu.cont <= 0) {
+      this.arrOrder.splice(this.arrOrder.indexOf(itemsMenu), 1)
+    }
+    console.log(this.arrOrder, 'array order en RESTAR');
+  }
+
+  sumItems(itemsMenu: any) {
+    itemsMenu.cont += 1;
+    itemsMenu.subTotal = itemsMenu.price * itemsMenu.cont
+    console.log(this.arrOrder, 'array order en SUMAR');
+  }
 
 }
 
-// RECORRER EL arrOrder Y BUSCAR QUE PRODUCTO TIENE EL MISMO NOMBRE QUE EL SIGUIENTE ELEMENTO Y ACUMULAR
-// LOS CONTADORES DE AMBOS
-
-//SI EL ELEMENTO 1 .PRODUCT ES 'AROS DE CEBOLLA' Y EN EL CONT TIENE 2, Y EL ELEMENTO 2 .PRODUCT ES 'AROS DE CEBOLLA'
-// Y EN EL CONT TIENE 1, ENTONCES EL RESULTADO DEBERÍA SER UN UNICO ELEMENTO CON CONT 3

@@ -32,10 +32,10 @@ export class ItemMenuLunchAndDinnerComponent implements OnInit {
   getElemMenu(param: any) { // Param es cualquier item del menú 
     if (param.product.startsWith('Hamburguesa')) {
       this.modalSwitch = true; // Abre el modal
-      this.burgerOptions = param; // almacenamos los valores del menú en una variable
+      this.burgerOptions = param; // Almacenamos los valores del menú en una variable
       this.selectValue = undefined; // Reinicia el valor del select cada vez que se da agregar(evita el cierre del modal)
     } else {
-      this.connector.$lunchAndDinner.emit(param);
+      this.connector.$lunchAndDinner.emit(param); // Emite el objeto hacia itemBill
     }
   }
 
@@ -56,7 +56,7 @@ export class ItemMenuLunchAndDinnerComponent implements OnInit {
   }
 
 
-  // Método para cerrar el modal y capturar los datos seleccionados y enviarlo a addItem
+  // Método para cerrar el modal y capturar los datos seleccionados y enviarlo a itemBill
   closeModal() {
     // Si el valor es undefines el modal permanece abierto, si no se cierra
     if (this.selectValue === undefined) {
@@ -95,8 +95,9 @@ export class ItemMenuLunchAndDinnerComponent implements OnInit {
         1
       )
     }
-    // enviamos el objeto de la hamburguesa a addItem
-    this.connector.$lunchAndDinner.emit(this.hamburger);
+    // Emitimos el objeto de la hamburguesa a itemBill
+    this.connector.$lunchAndDinner.emit(this.hamburger); 
+    // Reiniciamos los valores de los checkbox para limpiarlos
     this.cheeseValue = ''
     this.eggValue = ''
   }
