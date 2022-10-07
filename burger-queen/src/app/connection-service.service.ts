@@ -16,5 +16,6 @@ export class ConnectionServiceService {
   $conector = new EventEmitter<any>();
   $modal = new EventEmitter<any>();
   $lunchAndDinner = new EventEmitter<any>();
+  $totalOrder = new EventEmitter<any>();
 
 }

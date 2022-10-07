@@ -12,18 +12,22 @@ export class ViewWaiterOrderComponent implements OnInit {
   clientName: string = ''; // nombre del cliente, lo traemos de nameClient
   breakfastSwitch: boolean = true; // item Menú desayuno
   lunchAndDinnerSwitch!: boolean; // menú lunch & dinner 
+  totalPrice: number = 0;
   @ViewChild('btnBreakfast') buttonBreakFast!: ElementRef;
   @ViewChild('btnLunch') buttonLunch!: ElementRef;
 
   
-  constructor(private router: ActivatedRoute, private renderer2: Renderer2) { }
+  constructor(private router: ActivatedRoute, private renderer2: Renderer2, private connector: ConnectionServiceService ) { }
   
   ngOnInit(): void {
     // Nos suscribimos al valor del nombre del cliente 
     this.router.queryParams.subscribe((params: any) => {
       this.clientName = params.client;
     })
-      
+    
+    this.connector.$totalOrder.subscribe((valor: any) => {
+      this.totalPrice = valor;
+    })
   }
 
   // Método para mostrar el menú de desayuno

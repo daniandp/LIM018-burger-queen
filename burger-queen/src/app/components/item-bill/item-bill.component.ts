@@ -19,9 +19,11 @@ export class ItemBillComponent implements OnInit {
   ngOnInit(): void {
     this.connector.$conector.subscribe((valor: any) => {
       this.addItem(valor); // nos suscribimos y traemos el OBJETO de cada item del menú desayuno
+      this.totalPrice();
     })
     this.connector.$lunchAndDinner.subscribe((valor: any) => {
       this.addItem(valor); // nos suscribimos y traemos el OBJETO de cada item del menú almuerzo y cena
+      this.totalPrice();
     });
   }
   // Método para llenar el array de la orden, si 2 items se repiten los suma en el contador
@@ -51,6 +53,7 @@ export class ItemBillComponent implements OnInit {
     if (itemsMenu.cont <= 0) {
       this.arrOrder.splice(this.arrOrder.indexOf(itemsMenu), 1)
     }
+    this.totalPrice();
     console.log(this.arrOrder, 'array order en RESTAR');
   }
 
@@ -58,7 +61,15 @@ export class ItemBillComponent implements OnInit {
     itemsMenu.cont += 1;
     itemsMenu.subTotal = itemsMenu.price * itemsMenu.cont
     console.log(this.arrOrder, 'array order en SUMAR');
+    this.totalPrice();
   }
 
+  totalPrice() {
+    let total = 0;
+    this.arrOrder.forEach((elem) => {
+      total += elem.subTotal
+    })
+    this.connector.$totalOrder.emit(total);
+  }
 }
 
