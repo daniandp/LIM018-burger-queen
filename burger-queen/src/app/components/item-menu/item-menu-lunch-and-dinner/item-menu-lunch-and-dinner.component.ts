@@ -35,32 +35,9 @@ export class ItemMenuLunchAndDinnerComponent implements OnInit {
       this.burgerOptions = param; // almacenamos los valores del menú en una variable
       this.selectValue = undefined; // Reinicia el valor del select cada vez que se da agregar(evita el cierre del modal)
     } else {
-      this.addItem(param);
+      this.connector.$lunchAndDinner.emit(param);
     }
-    this.connector.$lunchAndDinner.emit(this.arrOrder);
   }
-
-  // Método para llenar el array de la orden, si 2 items se repiten los suma en el contador
-  addItem(itemsMenu: any) {
-    if (this.arrOrder.some((elem) => elem.product === itemsMenu.product)) {
-      this.arrOrder = this.arrOrder.map((elem) => {
-        if (elem.product === itemsMenu.product) {
-          elem.cont += 1;
-        
-          return elem;
-        }
-        
-       
-        return elem;
-      });
-    } else {
-      this.arrOrder.push({ ...itemsMenu, cont: 1 });
-    }
-    this.arrOrder = this.arrOrder.map((elem) => {
-      elem.subTotal = elem.price * elem.cont;
-      return elem;
-    })
- } 
 
   // Método para escuchar el cambio de opciones en el select
   changeSelectValue(event: any) {
@@ -119,8 +96,7 @@ export class ItemMenuLunchAndDinnerComponent implements OnInit {
       )
     }
     // enviamos el objeto de la hamburguesa a addItem
-    this.addItem(this.hamburger);
-    this.connector.$lunchAndDinner.emit(this.arrOrder);
+    this.connector.$lunchAndDinner.emit(this.hamburger);
     this.cheeseValue = ''
     this.eggValue = ''
   }
