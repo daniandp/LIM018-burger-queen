@@ -17,25 +17,6 @@ export class ItemMenuComponent implements OnInit {
   ngOnInit(): void { }
   
   getElemMenu(param: any) { 
-    this.addItem(param);
-    this.connector.$conector.emit(this.arrOrder);
-  }
-
-  addItem(itemsMenu: any) {
-    if(this.arrOrder.some((elem) => elem.product === itemsMenu.product)) {
-      this.arrOrder = this.arrOrder.map((elem) => {
-        if (elem.product === itemsMenu.product) {
-          elem.cont += 1;
-          return elem;
-        }
-        return elem;
-      });
-    } else {
-      this.arrOrder.push({...itemsMenu, cont: 1 });
-    }
-    this.arrOrder = this.arrOrder.map((elem) => {
-      elem.subTotal = elem.price * elem.cont;
-      return elem;
-    })
+    this.connector.$conector.emit(param);
   }
 }
