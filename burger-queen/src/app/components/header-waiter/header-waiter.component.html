@@ -7,8 +7,8 @@
             <h1>Burger Queen</h1>
         </div>
         <div class="contBtnsHeader">
-            <button type="button" class="btn btnWaiterSelected">TOMAR ORDEN</button>
-            <button type="button" class="btn btnWaiter">LISTA DE PEDIDOS</button>
+            <button #btnTakeOrder type="button" (click)="goToTakeOrder()" class="btn btnSelected">TOMAR ORDEN</button>
+            <button #btnListOrder type="button" (click)="goToStatusList()" class="btn">LISTA DE PEDIDOS</button>
         </div>
     </nav>
 </header>

@@ -18,11 +18,11 @@ export class ItemBillComponent implements OnInit {
 
   ngOnInit(): void {
     this.connector.$conector.subscribe((valor: any) => {
-      this.addItem(valor); // nos suscribimos y traemos el OBJETO de cada item del menú desayuno
+      this.addItem(valor); // nos suscribimos y recibimos el OBJETO de cada item del menú desayuno
       this.totalPrice();
     })
     this.connector.$lunchAndDinner.subscribe((valor: any) => {
-      this.addItem(valor); // nos suscribimos y traemos el OBJETO de cada item del menú almuerzo y cena
+      this.addItem(valor); // nos suscribimos y recibimos el OBJETO de cada item del menú almuerzo y cena
       this.totalPrice();
     });
   }
@@ -46,7 +46,8 @@ export class ItemBillComponent implements OnInit {
     })
     console.log(this.arrOrder, 'CONSOLE DE ARRAY ORDER EN ITEMBILL');
   }
-  
+
+  // Método para restar items y elimina el item si es igual o menor a 0
   restItems(itemsMenu: any) {
     itemsMenu.cont -= 1;
     itemsMenu.subTotal = itemsMenu.price * itemsMenu.cont
@@ -57,6 +58,7 @@ export class ItemBillComponent implements OnInit {
     console.log(this.arrOrder, 'array order en RESTAR');
   }
 
+  // Método para sumar items
   sumItems(itemsMenu: any) {
     itemsMenu.cont += 1;
     itemsMenu.subTotal = itemsMenu.price * itemsMenu.cont
@@ -64,12 +66,13 @@ export class ItemBillComponent implements OnInit {
     this.totalPrice();
   }
 
+  // Método para el total de la orden 
   totalPrice() {
     let total = 0;
     this.arrOrder.forEach((elem) => {
       total += elem.subTotal
     })
-    this.connector.$totalOrder.emit(total);
+    this.connector.$totalOrder.emit(total); // emitimos el valor total de la orden
   }
 }
 

@@ -1,15 +1,44 @@
+<app-header-waiter></app-header-waiter>
 <section class="contTickets">
     <div class ="contBtnDeliveredOrders">
-        <button type="button" class="btnDeliveredOrders">
+        <button #btnDelivered type="button" (click)="showDelivered()" class="btnDeliveredOrders">
            <span>PEDIDOS ENTREGADOS </span>
            <div class="contImg">
              <img src="https://cdn-icons-png.flaticon.com/512/3081/3081371.png" alt="icono de entregado">
            </div>
         </button>
+        <button #btnStatusList type="button" (click)="showStatusList()" class="btnDeliveredOrders btnSelected">
+            <span>ESTADO DE PEDIDOS</span>
+            <div class="contImg">
+              <img src="https://cdn-icons-png.flaticon.com/512/1584/1584942.png" alt="icono de entregado">
+            </div>
+         </button>
     </div>
-    <section>
+    <section *ngIf="statusListSwitch">
         <app-ticket-order></app-ticket-order>
+        <h1>LISTA DE PEDIDOOOOOOOOOOOS</h1>
         <!-- <app-ticket-order></app-ticket-order>
         <app-ticket-order></app-ticket-order> -->
     </section>
 </section>
+<section class="contStatusList" *ngIf="deliveredSwitch">
+    <h1>PEDIDOS ENTREGADOOOOOOOOOOOOS</h1>
+    <!-- <div class ="contBtnDeliveredOrders">
+        <button type="button" (click)="showDelivered()" class="btnDeliveredOrders">
+            <span>PEDIDOS ENTREGADOS </span>
+            <div class="contImg">
+              <img src="https://cdn-icons-png.flaticon.com/512/3081/3081371.png" alt="icono de entregado">
+            </div>
+         </button>
+        <button type="button" (click)="showStatusList()" class="btnDeliveredOrders">
+           <span>ESTADO DE PEDIDOS</span>
+           <div class="contImg">
+             <img src="https://cdn-icons-png.flaticon.com/512/3081/3081371.png" alt="icono de entregado">
+           </div>
+        </button>
+    </div> -->
+        <app-ticket-order></app-ticket-order>
+        <!-- <app-ticket-order></app-ticket-order>
+        <app-ticket-order></app-ticket-order> -->
+</section>
+

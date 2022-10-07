@@ -50,16 +50,20 @@
     border-radius: 0.5rem;
     border-style: none;
     color: #FFFFFF;
+    background-color: #FFB307;
     font-size:  medium;
     text-shadow: 0 0 6px #000000, 0 0 2px #000000;
     cursor: pointer;
     font-family: 'Slackey', cursive; 
 }
 
-.btnWaiter {
+/* .btnColor {
     background: #FFB307;
-}
-.btnWaiterSelected{
+} */
+
+.btnSelected{
     background: #00CED1;
+    color: #fff;
     box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.25);
+    text-shadow: 0 0 6px #000000, 0 0 2px #000000;
 }
