@@ -8,9 +8,9 @@ import Menu from './interfaces/menu.interface';
 export class ConnectionServiceService {
 
   constructor(private firestore: Firestore) { }
-  addMenu(menu: Menu) {
-    const menuRef = collection(this.firestore, 'menu');
-    return addDoc(menuRef, menu);
+  addOrder(order: any) {
+    const orderRef = collection(this.firestore, 'orderClient');
+    return addDoc(orderRef, order);
   }
 
   $conector = new EventEmitter<any>();
@@ -18,5 +18,6 @@ export class ConnectionServiceService {
   $lunchAndDinner = new EventEmitter<any>();
   $totalOrder = new EventEmitter<any>();
   $navigateViewWaiter = new EventEmitter<any>();
-
+  $addOrderFirebase = new EventEmitter<any>();
+  $sendArrOrder = new EventEmitter<any>();
 }
