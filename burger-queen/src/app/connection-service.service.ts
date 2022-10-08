@@ -1,5 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Firestore, collection, addDoc } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, collectionData } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 import Menu from './interfaces/menu.interface';
 
 @Injectable({
@@ -8,9 +9,14 @@ import Menu from './interfaces/menu.interface';
 export class ConnectionServiceService {
 
   constructor(private firestore: Firestore) { }
-  addOrder(order: any) {
+  addOrder(order: Menu) {
     const orderRef = collection(this.firestore, 'orderClient');
     return addDoc(orderRef, order);
+  }
+
+  getOrder(): Observable<Menu[]> {
+    const orderRef = collection(this.firestore, 'orderClient');
+    return collectionData(orderRef, { idField: 'id' }) as Observable<Menu[]>;
   }
 
   $conector = new EventEmitter<any>();

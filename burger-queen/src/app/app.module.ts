@@ -10,7 +10,6 @@ import { ViewWaiterOrderComponent } from './components/view-waiter-order/view-wa
 import { ItemMenuComponent } from './components/item-menu/item-menu.component';
 import { ItemBillComponent } from './components/item-bill/item-bill.component';
 import { ContainerTicketsComponent } from './components/container-tickets/container-tickets.component';
-import { TicketOrderComponent } from './components/ticket-order/ticket-order.component';
 import { RouterModule } from '@angular/router';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
@@ -26,7 +25,6 @@ import { ItemMenuLunchAndDinnerComponent } from './components/item-menu/item-men
     ItemMenuComponent,
     ItemBillComponent,
     ContainerTicketsComponent,
-    TicketOrderComponent,
     ItemMenuLunchAndDinnerComponent,
   ],
   imports: [
