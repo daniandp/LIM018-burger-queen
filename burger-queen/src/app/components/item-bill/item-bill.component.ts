@@ -74,5 +74,9 @@ export class ItemBillComponent implements OnInit {
     })
     this.connector.$totalOrder.emit(total); // emitimos el valor total de la orden
   }
+
+  sendOrder() {
+    
+  }
 }
 

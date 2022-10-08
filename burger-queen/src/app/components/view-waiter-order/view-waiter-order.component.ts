@@ -15,7 +15,7 @@ export class ViewWaiterOrderComponent implements OnInit {
   totalPrice: number = 0;
   @ViewChild('btnBreakfast') buttonBreakFast!: ElementRef;
   @ViewChild('btnLunch') buttonLunch!: ElementRef;
-
+  //@ViewChild('sendOrder') btnSendOrder!: ElementRef;
   
   constructor(private router: ActivatedRoute, private renderer2: Renderer2, private connector: ConnectionServiceService ) { }
   
@@ -50,4 +50,7 @@ export class ViewWaiterOrderComponent implements OnInit {
     this.breakfastSwitch = false;
   }
 
+  sendOrder() {
+    
+  }
 }
