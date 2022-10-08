@@ -13,6 +13,7 @@ export class ItemBillComponent implements OnInit {
   @ViewChild('itemPrice') itPrice!: ElementRef;
   @ViewChild('removeItem') btnRemove!: ElementRef;
   @ViewChild('addItem') btnAdd!: ElementRef;
+  arrFirebase: Array<any> = [];
 
   constructor(private connector: ConnectionServiceService) { }
 
@@ -73,10 +74,10 @@ export class ItemBillComponent implements OnInit {
       total += elem.subTotal
     })
     this.connector.$totalOrder.emit(total); // emitimos el valor total de la orden
+    this.connector.$sendArrOrder.emit(this.arrOrder);
   }
 
-  sendOrder() {
-    
-  }
+ 
+
 }
 

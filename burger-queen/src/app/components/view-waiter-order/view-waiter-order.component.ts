@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ConnectionServiceService } from 'src/app/connection-service.service';
-
+import { sendArrOrder } from '../models/sendArrOrder';
 
 @Component({
   selector: 'app-view-waiter-order',
@@ -15,6 +15,7 @@ export class ViewWaiterOrderComponent implements OnInit {
   totalPrice: number = 0;
   @ViewChild('btnBreakfast') buttonBreakFast!: ElementRef;
   @ViewChild('btnLunch') buttonLunch!: ElementRef;
+  sendArrOrder: any;
   //@ViewChild('sendOrder') btnSendOrder!: ElementRef;
   
   constructor(private router: ActivatedRoute, private renderer2: Renderer2, private connector: ConnectionServiceService ) { }
@@ -27,6 +28,17 @@ export class ViewWaiterOrderComponent implements OnInit {
     
     this.connector.$totalOrder.subscribe((valor: any) => {
       this.totalPrice = valor;
+    })
+
+    this.connector.$sendArrOrder.subscribe((valor: any) => {
+      this.sendArrOrder = new sendArrOrder (
+        this.clientName,
+        this.totalPrice,
+        "PENDIENTE",
+        valor,
+      )
+       
+      
     })
   }
 
@@ -50,7 +62,9 @@ export class ViewWaiterOrderComponent implements OnInit {
     this.breakfastSwitch = false;
   }
 
-  sendOrder() {
-    
+  async sendOrder() {
+    const response = await this.connector.addOrder(this.sendArrOrder)
+    console.log(response, "!!!!sendArrOrder");
+    console.log(sendArrOrder, "sendArray")
   }
 }
