@@ -32,7 +32,7 @@ export class HeaderWaiterComponent implements OnInit {
     const btnListOrder = this.listOrder.nativeElement
     this.renderer2.addClass(btnListOrder, 'btnSelected');
     this.renderer2.removeClass(btnTakeOrder, 'btnSelected');
-    this.router.navigate(['/containerOrders']);
+    this.router.navigate(['/containerOrders']); 
   }
 
   ngOnInit(): void { }
