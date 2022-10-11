@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Renderer2, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, Renderer2, ElementRef, AfterViewInit } from '@angular/core';
 import { ConnectionServiceService } from 'src/app/connection-service.service';
 import Menu from 'src/app/interfaces/menu.interface';
 @Component({
@@ -9,16 +9,18 @@ import Menu from 'src/app/interfaces/menu.interface';
 export class ContainerTicketsComponent implements OnInit {
   deliveredSwitch: boolean = false;
   statusListSwitch: boolean = true;
-  @ViewChild('btnDelivered') btnShowDelivered!: ElementRef
-  @ViewChild('btnStatusList') btnStatusList!: ElementRef
+  @ViewChild('btnDelivered') btnShowDelivered!: ElementRef;
+  @ViewChild('btnStatusList') btnStatusList!: ElementRef;
+  @ViewChild('statusOrder') spanStatusOrder!: ElementRef;
   menu!: Menu[];
+  statusMenu: Array<any> = [];
 
   constructor(private renderer2: Renderer2, private connector: ConnectionServiceService) { 
     this.menu = [
       {
-        clientName: 'pedro',
+        clientName: 'Cliente',
         totalPrice: 10,
-        statusOrder: 'PENDIENTE',
+        statusOrder: 'Estado Orden',
         fullOrder: [],
         
       }
@@ -27,28 +29,53 @@ export class ContainerTicketsComponent implements OnInit {
 
   ngOnInit(): void {
     this.connector.getOrder().subscribe(menu => {
+      const btnDelivered = this.btnShowDelivered.nativeElement
+      const btnStatusOrder = this.btnStatusList.nativeElement
+      this.renderer2.addClass(btnStatusOrder, 'btnSelected');
+      this.renderer2.removeClass(btnDelivered, 'btnSelected');
       this.menu = menu;
-      console.log(this.menu, 'MENUUUUUU');
-      
-    }) 
+      this.menu.forEach((elem) => {
+        if(elem.statusOrder === 'PENDIENTE' || elem.statusOrder === 'PREPARADO') {
+          this.statusMenu.push(elem);
+        }
+      })
+    })
   }
 
   showDelivered() {
-    const btnDelivered = this.btnShowDelivered.nativeElement
-    const btnStatusOrder = this.btnStatusList.nativeElement
+    this.statusMenu = [];
+    const btnDelivered = this.btnShowDelivered.nativeElement;
+    const btnStatusOrder = this.btnStatusList.nativeElement;
+    console.log(this.spanStatusOrder, 'CONST STATUS ORDER SPAN');
     this.deliveredSwitch = true;
     this.statusListSwitch = false;
     this.renderer2.addClass(btnDelivered, 'btnSelected');
     this.renderer2.removeClass(btnStatusOrder, 'btnSelected');
+    console.log(this.spanStatusOrder);
+    
+    this.menu.forEach((elem) => {
+      if(elem.statusOrder === 'ENTREGADO') {
+        this.statusMenu.push(elem);
+        // this.renderer2.addClass(spanStatusOrder, 'spanDeliveredOrder')
+      }
+    })
+    console.log(this.statusMenu, 'ARRAY DE ORDENES ENTREGADAS ');
   }
   
   showStatusList() {
+    this.statusMenu = [];
     const btnDelivered = this.btnShowDelivered.nativeElement
     const btnStatusOrder = this.btnStatusList.nativeElement
     this.statusListSwitch = true;
     this.deliveredSwitch = false;
     this.renderer2.addClass(btnStatusOrder, 'btnSelected');
     this.renderer2.removeClass(btnDelivered, 'btnSelected');
+    this.menu.forEach((elem) => {
+      if(elem.statusOrder === 'PENDIENTE' || elem.statusOrder === 'PREPARADO') {
+        this.statusMenu.push(elem);
+      }
+    })
+    console.log(this.statusMenu, 'ARRAY DE ORDENES PENDIENTES');
 }
 
 }

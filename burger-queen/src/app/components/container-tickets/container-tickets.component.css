@@ -1,14 +1,15 @@
-.contTickets, .contStatusList {
-    display: flex;
-    flex-direction: column;
-}
 
+.contTickets {
+    display: flex;
+    flex-wrap: wrap;
+}
 .contBtnDeliveredOrders {
     display: flex;
     justify-content: center;
     width: 100%;
     height: 6vh;
     gap: 2rem;
+    margin: 1rem;
 }
 
 .btnDeliveredOrders {
@@ -47,7 +48,7 @@
 /* <<<<<<<<<<<<<<<< AQUI COMIENZAN LOS TICKETS ORDER >>>>>>>>>>>>>>>>>>>>>>>>*/
 
 .contTicketOrder {
-    margin: 2rem;
+    margin: 2rem 3rem;
     display: flex;
     flex-direction: column;
     width: 25%;
@@ -109,4 +110,9 @@
 
 .deliveredOrder {
     background-color: #00CED1;
+}
+
+.spanDeliveredOrder {
+    color: #000000;
+    background-color: #C3A983;
 }
