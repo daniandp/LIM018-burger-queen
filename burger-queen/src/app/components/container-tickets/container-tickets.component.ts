@@ -11,7 +11,6 @@ export class ContainerTicketsComponent implements OnInit {
   statusListSwitch: boolean = true;
   @ViewChild('btnDelivered') btnShowDelivered!: ElementRef;
   @ViewChild('btnStatusList') btnStatusList!: ElementRef;
-  @ViewChild('statusOrder') spanStatusOrder!: ElementRef;
   menu!: Menu[];
   statusMenu: Array<any> = [];
 
@@ -39,6 +38,7 @@ export class ContainerTicketsComponent implements OnInit {
           this.statusMenu.push(elem);
         }
       })
+      //AGREGAR .SORT() PARA ORDENAR LOS PENDIENTES DESPUES DE LOS PREPARADOS
     })
   }
 
@@ -46,17 +46,13 @@ export class ContainerTicketsComponent implements OnInit {
     this.statusMenu = [];
     const btnDelivered = this.btnShowDelivered.nativeElement;
     const btnStatusOrder = this.btnStatusList.nativeElement;
-    console.log(this.spanStatusOrder, 'CONST STATUS ORDER SPAN');
     this.deliveredSwitch = true;
     this.statusListSwitch = false;
     this.renderer2.addClass(btnDelivered, 'btnSelected');
-    this.renderer2.removeClass(btnStatusOrder, 'btnSelected');
-    console.log(this.spanStatusOrder);
-    
+    this.renderer2.removeClass(btnStatusOrder, 'btnSelected');    
     this.menu.forEach((elem) => {
       if(elem.statusOrder === 'ENTREGADO') {
         this.statusMenu.push(elem);
-        // this.renderer2.addClass(spanStatusOrder, 'spanDeliveredOrder')
       }
     })
     console.log(this.statusMenu, 'ARRAY DE ORDENES ENTREGADAS ');
