@@ -105,6 +105,7 @@
     font-family: "Slackey", cursive;
     color: #fff;
     font-size: medium;
+    text-shadow: 0 0 6px #000000, 0 0 2px #000000;
     background-color: #FFB307;
 }
 
