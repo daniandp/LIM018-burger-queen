@@ -113,7 +113,11 @@
     background-color: #00CED1;
 }
 
-.spanDeliveredOrder {
+.contDeliveredOrder {
     color: #000000;
     background-color: #C3A983;
+}
+
+.contReadyOrder {
+    background-color: #36D100;
 }

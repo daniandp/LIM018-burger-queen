@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ConnectionServiceService } from 'src/app/connection-service.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class ViewWaiterOrderComponent implements OnInit {
   arrOrder: Array<any> = [];
   //@ViewChild('sendOrder') btnSendOrder!: ElementRef;
   
-  constructor(private router: ActivatedRoute, private renderer2: Renderer2, private connector: ConnectionServiceService ) { }
+  constructor(private router2: Router, private router: ActivatedRoute, private renderer2: Renderer2, private connector: ConnectionServiceService ) { }
   
   ngOnInit(): void {
     // Nos suscribimos al valor del nombre del cliente 
@@ -62,14 +62,18 @@ export class ViewWaiterOrderComponent implements OnInit {
   }
 
   async sendOrder() {
-    this.sendFullOrder = {
-      clientName: this.clientName,
-      totalPrice: this.totalPrice,
-      statusOrder: 'PENDIENTE',
-      fullOrder: this.arrOrder,
+    if(this.totalPrice !== 0 ) {
+      this.sendFullOrder = {
+        clientName: this.clientName,
+        totalPrice: this.totalPrice,
+        statusOrder: 'ENTREGADO',
+        fullOrder: this.arrOrder,
+      }
+      const response = await this.connector.addOrder(this.sendFullOrder)
+      this.router2.navigate(['/nameClient']); // -------- falta que diga algo "SE ENVIO LA ORDEN" 
+    } else {
+      alert('DEBES INGRESAR ARTICULOS PARA CONTINUAR')
+        // ----------- FALTA QUE MUESTRE ALGO QUE DIGA QUE NO PUEDE MANDAR ORDEN VACIA
     }
-    const response = await this.connector.addOrder(this.sendFullOrder)
-    console.log(response, "!!!!responseeeee");
-    console.log(this.sendFullOrder, "sendArrayOrder!!")
-  }
+    }
 }
