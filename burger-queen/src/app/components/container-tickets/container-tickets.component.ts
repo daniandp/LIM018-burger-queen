@@ -13,6 +13,7 @@ export class ContainerTicketsComponent implements OnInit {
   @ViewChild('btnStatusList') btnStatusList!: ElementRef;
   menu!: Menu[];
   statusMenu: Array<any> = [];
+  filteredStatus: Array<any> = [];
 
   constructor(private renderer2: Renderer2, private connector: ConnectionServiceService) { 
     this.menu = [
@@ -35,8 +36,17 @@ export class ContainerTicketsComponent implements OnInit {
       this.menu = menu;
       this.menu.forEach((elem) => {
         if(elem.statusOrder === 'PENDIENTE' || elem.statusOrder === 'PREPARADO') {
-          this.statusMenu.push(elem);
+          this.filteredStatus.push(elem);
         }
+      })
+      this.statusMenu = this.filteredStatus.sort(function(a, b){
+        if (a.statusOrder > b.statusOrder){
+           return -1;
+        }else if(b.statusOrder > a.statusOrder){
+           return 1;
+        }
+       
+        return 0;
       })
       //AGREGAR .SORT() PARA ORDENAR LOS PENDIENTES DESPUES DE LOS PREPARADOS
     })
@@ -59,7 +69,7 @@ export class ContainerTicketsComponent implements OnInit {
   }
   
   showStatusList() {
-    this.statusMenu = [];
+    this.filteredStatus = [];
     const btnDelivered = this.btnShowDelivered.nativeElement
     const btnStatusOrder = this.btnStatusList.nativeElement
     this.statusListSwitch = true;
@@ -68,10 +78,21 @@ export class ContainerTicketsComponent implements OnInit {
     this.renderer2.removeClass(btnDelivered, 'btnSelected');
     this.menu.forEach((elem) => {
       if(elem.statusOrder === 'PENDIENTE' || elem.statusOrder === 'PREPARADO') {
-        this.statusMenu.push(elem);
+        
+        this.filteredStatus.push(elem);
       }
     })
-    console.log(this.statusMenu, 'ARRAY DE ORDENES PENDIENTES');
+     this.statusMenu = this.filteredStatus.sort(function(a, b){
+      if (a.statusOrder > b.statusOrder){
+         return -1;
+      }else if(b.statusOrder > a.statusOrder){
+         return 1;
+      }
+     
+      return 0;
+    })
+    console.log(this.statusMenu, "filtradosss!!")
+    // Métodoconsole.log(this.statusMenu, 'ARRAY DE ORDENES PENDIENTES');
 }
 
 }
