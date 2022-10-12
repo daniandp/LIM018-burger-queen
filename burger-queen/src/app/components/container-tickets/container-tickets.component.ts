@@ -28,18 +28,16 @@ export class ContainerTicketsComponent implements OnInit {
     ]
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
     this.connector.getOrder().subscribe(menu => {
+      this.filteredStatus = [];
       const btnDelivered = this.btnShowDelivered.nativeElement
       const btnStatusOrder = this.btnStatusList.nativeElement
       this.renderer2.addClass(btnStatusOrder, 'btnSelected');
       this.renderer2.removeClass(btnDelivered, 'btnSelected');
       this.menu = menu;
       this.filterOrderStatus();
-     
     })
-    console.log(this.menu, 'MENU DE LA 55');
-    
   }
 
   filterOrderStatus() {
@@ -85,29 +83,11 @@ export class ContainerTicketsComponent implements OnInit {
     this.renderer2.removeClass(btnDelivered, 'btnSelected');
     this.filterOrderStatus();
     console.log(this.statusMenu, "filtradosss!!")
-    // Métodoconsole.log(this.statusMenu, 'ARRAY DE ORDENES PENDIENTES');
+    
 }
+  
   async btnDeliveredOrder(order: any) {
-   const response = await this.connector.changeStatus(order, 'ENTREGADO')
-   this.filterOrderStatus();
-  }
-
-  // async sendOrder() {
-  //   if(this.totalPrice !== 0 ) {
-  //     this.totalVoid = false;
-  //     this.sendFullOrder = {
-  //       clientName: this.clientName,
-  //       totalPrice: this.totalPrice,
-  //       statusOrder: 'PENDIENTE',
-  //       fullOrder: this.arrOrder,
-  //     }
-  //     this.orderSuccess = true;
-  //     const response = await this.connector.addOrder(this.sendFullOrder)
-  //   } else {
-  //     this.totalVoid = true;
-  //   }
-  //   }
-
-
-
+    const response = await this.connector.changeStatus(order, 'ENTREGADO')
+   }
+  
 }

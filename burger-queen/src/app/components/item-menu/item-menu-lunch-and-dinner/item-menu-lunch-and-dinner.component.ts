@@ -101,6 +101,10 @@ export class ItemMenuLunchAndDinnerComponent implements OnInit {
     this.cheeseValue = ''
     this.eggValue = ''
   }
+
+  closeModalBurger() {
+    this.modalSwitch = false;
+  }
 }
 
 // COSAS QUE NOS FALTAN

@@ -49,6 +49,8 @@
     justify-content: center;
 }
 
+/* >>>>>>>>>>>>>>>>>>>> AQUI COMIENZA EL MODAL <<<<<<<<<<<<<<<<<<<<<<<< */
+
 .contModalBurgers {
     display: flex;
     flex-direction: column;
@@ -64,21 +66,42 @@
     right: 5%;
 }
 
-.contTitleModal {
+.contHeaderModal {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     font-family: 'Slackey', cursive; 
     font-size: large;
     text-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
-    gap: 2%;
     height: 10vh;
     background: rgba(255, 255, 255, 0.45);
     border-radius: 0.5rem 0.5rem 0 0;
 }
 
+.contTitleModal {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2%;
+    height: 10vh;
+    width: 70%;
+}
+
 .contTitleModal > img, .contOptions > label > img {
     height: 75%;
+}
+
+.closeIcon {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 10vh;
+    width: 30%;
+    padding-right: 1rem;
+}
+
+.closeIcon > img {
+    height: 50%;
 }
 
 .contGeneral {
@@ -126,7 +149,6 @@
     font-size: large;
     text-align: center;
 }
-
 
 .contAdditionals {
     display: flex;
@@ -186,4 +208,13 @@
     color: #FFFFFF;
     text-shadow: 0 0 6px #000000, 0 0 2px #000000;
     background: #FFB307;
+}
+
+.textModal {
+    color: #FFFFFF;
+    text-shadow: 0 0 6px #000000, 0 0 2px #000000;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: x-large;
+    text-align: center;
 }

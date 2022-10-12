@@ -11,9 +11,14 @@
     </div>
     <div *ngIf="modalSwitch">
         <section class="contModalBurgers">
-            <div class="contTitleModal">
-                <img src="https://cdn-icons-png.flaticon.com/512/1923/1923533.png" alt="icono de hamburguesa">
-                <h2>HAMBURGUESA</h2>
+            <div class="contHeaderModal">
+                <div  class="contTitleModal">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1923/1923533.png" alt="icono de hamburguesa">
+                    <h2>HAMBURGUESA</h2>
+                </div>
+                <div class="closeIcon">
+                    <img (click)=" closeModalBurger()" src="https://cdn-icons-png.flaticon.com/512/32/32178.png" alt="icono de cerrar modal">
+                </div>
             </div>
             <div class="contGeneral">
                 <div class="contTypeBurger">
@@ -50,7 +55,7 @@
                     <div class="contBtnAcept">
                         <button #btnAceptModal type="button" class="btn" (click)="closeModal()">ACEPTAR</button>
                     </div>
-                    <div *ngIf="selectType.value === 'unselect'">ELIGE EL TIPO DE HAMBURGUESA</div>
+                    <div class="textModal" *ngIf="selectType.value === 'unselect'">ELIGE EL TIPO DE HAMBURGUESA</div>
                 </div>
             </div>
         </section>
