@@ -32,6 +32,10 @@
     </section>
     <section  *ngIf="totalVoid === true" class="modalTotalVoid">
         <h1>INGRESE UN PRODUCTO PARA CONTINUAR</h1>
-        <button class="btn" (click)="closeModalOrder()">CERRAR</button>
+        <button class="btn" (click)="closeModalOrderVoid()">CERRAR</button>
+    </section>
+    <section  *ngIf="orderSuccess === true" class="modalTotalVoid">
+        <h1>ORDEN ENVIADA EXITOSAMENTE</h1>
+        <button class="btn" (click)="closeModalOrderSuccess()">CERRAR</button>
     </section>
 </section>

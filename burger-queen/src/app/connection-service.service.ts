@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Firestore, collection, addDoc, collectionData, getDoc } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, collectionData, getDoc, updateDoc, doc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import Menu from './interfaces/menu.interface';
 
@@ -15,9 +15,15 @@ export class ConnectionServiceService {
   }
 
   getOrder(): Observable<Menu[]> {
-    const orderRef = collection(this.firestore, 'orderClient');
+    const orderRef = collection(this.firestore, 'orderClient'); 
     return collectionData(orderRef, { idField: 'id' }) as Observable<Menu[]>;
   }
+
+  changeStatus(order: Menu, status:string) {
+    const orderRef = doc(this.firestore, `orderClient/${order.id}`);
+    return updateDoc(orderRef, {statusOrder: status})
+  } 
+
   // getUsername(){
   //   this.db.getUsername(someUID).subscribe(
   //     (data) => this.username = data.exists ? data.data().username : undefined

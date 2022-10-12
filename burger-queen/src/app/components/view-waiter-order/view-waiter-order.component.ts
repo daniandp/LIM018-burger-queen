@@ -17,6 +17,7 @@ export class ViewWaiterOrderComponent implements OnInit {
   sendFullOrder: any = {};
   arrOrder: Array<any> = [];
   totalVoid: boolean = false;
+  orderSuccess: boolean = false;
   
   constructor(private router2: Router, private router: ActivatedRoute, private renderer2: Renderer2, private connector: ConnectionServiceService ) { }
   
@@ -67,17 +68,22 @@ export class ViewWaiterOrderComponent implements OnInit {
       this.sendFullOrder = {
         clientName: this.clientName,
         totalPrice: this.totalPrice,
-        statusOrder: 'PENDIENTE',
+        statusOrder: 'PREPARADO',
         fullOrder: this.arrOrder,
       }
+      this.orderSuccess = true;
       const response = await this.connector.addOrder(this.sendFullOrder)
-      this.router2.navigate(['/nameClient']); // -------- falta que diga algo "SE ENVIO LA ORDEN" 
     } else {
       this.totalVoid = true;
     }
     }
 
-    closeModalOrder() {
+    closeModalOrderVoid() {
       this.totalVoid = false;
-    }
+  }
+  
+  closeModalOrderSuccess() {
+    this.router2.navigate(['/nameClient']);
+    this.orderSuccess = false;
+  }
 }

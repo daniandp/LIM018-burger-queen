@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit, ViewChild, Renderer2, ElementRef, AfterViewInit } from '@angular/core';
 import { ConnectionServiceService } from 'src/app/connection-service.service';
 import Menu from 'src/app/interfaces/menu.interface';
@@ -34,23 +35,28 @@ export class ContainerTicketsComponent implements OnInit {
       this.renderer2.addClass(btnStatusOrder, 'btnSelected');
       this.renderer2.removeClass(btnDelivered, 'btnSelected');
       this.menu = menu;
-      this.menu.forEach((elem) => {
-        if(elem.statusOrder === 'PENDIENTE' || elem.statusOrder === 'PREPARADO') {
-          this.filteredStatus.push(elem);
-        }
-      })
-      this.statusMenu = this.filteredStatus.sort(function(a, b){
-        if (a.statusOrder > b.statusOrder){
-           return -1;
-        }else if(b.statusOrder > a.statusOrder){
-           return 1;
-        }
-       
-        return 0;
-      })
+      this.filterOrderStatus();
+     
     })
     console.log(this.menu, 'MENU DE LA 55');
     
+  }
+
+  filterOrderStatus() {
+    this.menu.forEach((elem) => {
+      if(elem.statusOrder === 'PENDIENTE' || elem.statusOrder === 'PREPARADO') {
+        this.filteredStatus.push(elem);
+      }
+    })
+    this.statusMenu = this.filteredStatus.sort(function(a, b){
+      if (a.statusOrder > b.statusOrder){
+         return -1;
+      }else if(b.statusOrder > a.statusOrder){
+         return 1;
+      }
+     
+      return 0;
+    })
   }
 
   showDelivered() {
@@ -77,28 +83,31 @@ export class ContainerTicketsComponent implements OnInit {
     this.deliveredSwitch = false;
     this.renderer2.addClass(btnStatusOrder, 'btnSelected');
     this.renderer2.removeClass(btnDelivered, 'btnSelected');
-    this.menu.forEach((elem) => {
-      if(elem.statusOrder === 'PENDIENTE' || elem.statusOrder === 'PREPARADO') {
-        
-        this.filteredStatus.push(elem);
-      }
-    })
-     this.statusMenu = this.filteredStatus.sort(function(a, b){
-      if (a.statusOrder > b.statusOrder){
-         return -1;
-      }else if(b.statusOrder > a.statusOrder){
-         return 1;
-      }
-     
-      return 0;
-    })
+    this.filterOrderStatus();
     console.log(this.statusMenu, "filtradosss!!")
     // Métodoconsole.log(this.statusMenu, 'ARRAY DE ORDENES PENDIENTES');
 }
-  btnDeliveredOrder(order: any) {
-    order = 'ENTREGADO';
-    console.log(order, 'LOG DE ORDER EN LA 99');
-    
-   return order = 'ENTREGADO';
+  async btnDeliveredOrder(order: any) {
+   const response = await this.connector.changeStatus(order, 'ENTREGADO')
+   this.filterOrderStatus();
   }
+
+  // async sendOrder() {
+  //   if(this.totalPrice !== 0 ) {
+  //     this.totalVoid = false;
+  //     this.sendFullOrder = {
+  //       clientName: this.clientName,
+  //       totalPrice: this.totalPrice,
+  //       statusOrder: 'PENDIENTE',
+  //       fullOrder: this.arrOrder,
+  //     }
+  //     this.orderSuccess = true;
+  //     const response = await this.connector.addOrder(this.sendFullOrder)
+  //   } else {
+  //     this.totalVoid = true;
+  //   }
+  //   }
+
+
+
 }
