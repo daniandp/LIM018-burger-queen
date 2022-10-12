@@ -16,7 +16,7 @@ export class ViewWaiterOrderComponent implements OnInit {
   @ViewChild('btnLunch') buttonLunch!: ElementRef;
   sendFullOrder: any = {};
   arrOrder: Array<any> = [];
-  //@ViewChild('sendOrder') btnSendOrder!: ElementRef;
+  totalVoid: boolean = false;
   
   constructor(private router2: Router, private router: ActivatedRoute, private renderer2: Renderer2, private connector: ConnectionServiceService ) { }
   
@@ -63,17 +63,21 @@ export class ViewWaiterOrderComponent implements OnInit {
 
   async sendOrder() {
     if(this.totalPrice !== 0 ) {
+      this.totalVoid = false;
       this.sendFullOrder = {
         clientName: this.clientName,
         totalPrice: this.totalPrice,
-        statusOrder: 'ENTREGADO',
+        statusOrder: 'PENDIENTE',
         fullOrder: this.arrOrder,
       }
       const response = await this.connector.addOrder(this.sendFullOrder)
       this.router2.navigate(['/nameClient']); // -------- falta que diga algo "SE ENVIO LA ORDEN" 
     } else {
-      alert('DEBES INGRESAR ARTICULOS PARA CONTINUAR')
-        // ----------- FALTA QUE MUESTRE ALGO QUE DIGA QUE NO PUEDE MANDAR ORDEN VACIA
+      this.totalVoid = true;
     }
+    }
+
+    closeModalOrder() {
+      this.totalVoid = false;
     }
 }

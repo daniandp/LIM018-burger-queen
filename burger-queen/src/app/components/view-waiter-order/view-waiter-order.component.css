@@ -104,3 +104,27 @@
     text-shadow: 0 0 6px #000000, 0 0 2px #000000;
     box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.25);
 }
+.modalTotalVoid {
+  display: flex;
+  flex-direction: column;
+  transform: translate(50%, 50%);
+  width: 50vw;
+  height: 30vh;
+  background: rgba(195, 169, 131, 1);
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 0.5rem;
+  position: absolute;
+  align-items: center;
+}
+.modalTotalVoid > h1 {
+  font-family: "Slackey", cursive;
+  text-align: center;
+  color: white;
+  height: 50%;
+  font-size: xx-large;
+  text-shadow: 0 0 6px #000000, 0 0 2px #000000;
+}
+.modalTotalVoid > button {
+  margin-top: -2rem;
+  height: 20%;
+}

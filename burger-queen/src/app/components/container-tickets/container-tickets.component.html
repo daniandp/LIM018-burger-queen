@@ -33,12 +33,19 @@
   <section>
     <section class="contTickets" *ngIf="deliveredSwitch">
       <section class="contTicketOrder" *ngFor="let order of statusMenu">
-        <div  class="contStatusOrder" [ngClass]="{'contDeliveredOrder': order.statusOrder === 'ENTREGADO'}" >
-          <span #statusOrder id="statusOrder" class="statusOrder">{{ order.statusOrder }}</span>
+        <div
+          class="contStatusOrder"
+          [ngClass]="{ contDeliveredOrder: order.statusOrder === 'ENTREGADO' }"
+        >
+          <span #statusOrder id="statusOrder" class="statusOrder">{{
+            order.statusOrder
+          }}</span>
         </div>
         <div class="contInfoOrder">
           <div class="contInfoClient">
-            <span id="clientName" class="clientName">{{ order.clientName }}</span>
+            <span id="clientName" class="clientName">{{
+              order.clientName
+            }}</span>
           </div>
           <div class="contBtnOrder">
             <button type="button" id="idCheckOrder" class="checkOrder">
@@ -50,16 +57,31 @@
     </section>
     <section class="contTickets" *ngIf="statusListSwitch">
       <section class="contTicketOrder" *ngFor="let order of statusMenu">
-        <div class="contStatusOrder" [ngClass]="{'contReadyOrder': order.statusOrder === 'PREPARADO'}">
-          <span id="statusOrder" class="statusOrder">{{ order.statusOrder }}</span>
+        <div
+          class="contStatusOrder"
+          [ngClass]="{ contReadyOrder: order.statusOrder === 'PREPARADO' }"
+        >
+          <span id="statusOrder" class="statusOrder">{{
+            order.statusOrder
+          }}</span>
         </div>
         <div class="contInfoOrder">
           <div class="contInfoClient">
-            <span id="clientName" class="clientName">{{ order.clientName }}</span>
+            <span id="clientName" class="clientName">{{
+              order.clientName
+            }}</span>
           </div>
           <div class="contBtnOrder">
-            <button type="button" id="idCheckOrder" class="checkOrder">VER</button>
-            <button type="button" id="idDeliveredOrder" class="deliveredOrder">
+            <button type="button" id="idCheckOrder" class="checkOrder">
+              VER
+            </button>
+            <button
+              type="button"
+              id="idDeliveredOrder"
+              class="deliveredOrder"
+              *ngIf="order.statusOrder === 'PREPARADO'"
+              (click)="btnDeliveredOrder(order.statusOrder)"
+            >
               ENTREGADO
             </button>
           </div>

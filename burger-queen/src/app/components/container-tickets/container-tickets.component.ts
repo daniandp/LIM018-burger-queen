@@ -48,8 +48,9 @@ export class ContainerTicketsComponent implements OnInit {
        
         return 0;
       })
-      //AGREGAR .SORT() PARA ORDENAR LOS PENDIENTES DESPUES DE LOS PREPARADOS
     })
+    console.log(this.menu, 'MENU DE LA 55');
+    
   }
 
   showDelivered() {
@@ -94,5 +95,10 @@ export class ContainerTicketsComponent implements OnInit {
     console.log(this.statusMenu, "filtradosss!!")
     // Métodoconsole.log(this.statusMenu, 'ARRAY DE ORDENES PENDIENTES');
 }
-
+  btnDeliveredOrder(order: any) {
+    order = 'ENTREGADO';
+    console.log(order, 'LOG DE ORDER EN LA 99');
+    
+   return order = 'ENTREGADO';
+  }
 }

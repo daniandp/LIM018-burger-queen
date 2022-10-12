@@ -26,8 +26,12 @@
             </div>
             <div class="contFooterResumen">
                 <span class="totalCash">Total= ${{totalPrice}}</span>
-                <button #SendOrder id="sendOrder" class="btn" (click)="sendOrder()">ENVIAR ORDEN</button>
+                <button id="sendOrder" class="btn" (click)="sendOrder()">ENVIAR ORDEN</button>
             </div>
         </div>
+    </section>
+    <section  *ngIf="totalVoid === true" class="modalTotalVoid">
+        <h1>INGRESE UN PRODUCTO PARA CONTINUAR</h1>
+        <button class="btn" (click)="closeModalOrder()">CERRAR</button>
     </section>
 </section>
