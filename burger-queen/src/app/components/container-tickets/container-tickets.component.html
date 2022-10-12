@@ -1,54 +1,35 @@
 <app-header-waiter></app-header-waiter>
 <section>
   <div class="contBtnDeliveredOrders">
-    <button
-      #btnDelivered
-      type="button"
-      (click)="showDelivered()"
-      class="btnDeliveredOrders"
-    >
+    <button #btnDelivered type="button" (click)="showDelivered()" class="btnDeliveredOrders">
       <span>PEDIDOS ENTREGADOS </span>
       <div class="contImg">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/3081/3081371.png"
-          alt="icono de entregado"
-        />
+        <img src="https://cdn-icons-png.flaticon.com/512/3081/3081371.png" alt="icono de entregado" />
       </div>
     </button>
-    <button
-      #btnStatusList
-      type="button"
-      (click)="showStatusList()"
-      class="btnDeliveredOrders btnSelectedcd burg"
-    >
+    <button #btnStatusList type="button" (click)="showStatusList()" class="btnDeliveredOrders btnSelectedcd burg">
       <span>ESTADO DE PEDIDOS</span>
       <div class="contImg">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/1584/1584942.png"
-          alt="icono de entregado"
-        />
+        <img src="https://cdn-icons-png.flaticon.com/512/1584/1584942.png" alt="icono de entregado" />
       </div>
     </button>
   </div>
   <section>
     <section class="contTickets" *ngIf="deliveredSwitch">
       <section class="contTicketOrder" *ngFor="let order of statusMenu">
-        <div
-          class="contStatusOrder"
-          [ngClass]="{ contDeliveredOrder: order.statusOrder === 'ENTREGADO' }"
-        >
+        <div class="contStatusOrder" [ngClass]="{ contDeliveredOrder: order.statusOrder === 'ENTREGADO' }">
           <span #statusOrder id="statusOrder" class="statusOrder">{{
             order.statusOrder
-          }}</span>
+            }}</span>
         </div>
         <div class="contInfoOrder">
           <div class="contInfoClient">
             <span id="clientName" class="clientName">{{
               order.clientName
-            }}</span>
+              }}</span>
           </div>
           <div class="contBtnOrder">
-            <button type="button" id="idCheckOrder" class="checkOrder">
+            <button (click)="openModalOrder(order)" type="button" id="idCheckOrder" class="checkOrder">
               VER
             </button>
           </div>
@@ -57,36 +38,49 @@
     </section>
     <section class="contTickets" *ngIf="statusListSwitch">
       <section class="contTicketOrder" *ngFor="let order of statusMenu">
-        <div
-          class="contStatusOrder"
-          [ngClass]="{ contReadyOrder: order.statusOrder === 'PREPARADO' }"
-        >
+        <div class="contStatusOrder" [ngClass]="{ contReadyOrder: order.statusOrder === 'PREPARADO' }">
           <span id="statusOrder" class="statusOrder">{{
             order.statusOrder
-          }}</span>
+            }}</span>
         </div>
         <div class="contInfoOrder">
           <div class="contInfoClient">
-            <span id="clientName" class="clientName">{{
+            <span class="clientNameTicket">{{
               order.clientName
-            }}</span>
+              }}</span>
           </div>
           <div class="contBtnOrder">
-            <button type="button" id="idCheckOrder" class="checkOrder">
+            <button (click)="openModalOrder(order)" type="button" id="idCheckOrder" class="checkOrder">
               VER
             </button>
-            <button
-              type="button"
-              id="idDeliveredOrder"
-              class="deliveredOrder"
-              *ngIf="order.statusOrder === 'PREPARADO'"
-              (click)="btnDeliveredOrder(order)"
-            >
+            <button type="button" id="idDeliveredOrder" class="deliveredOrder" *ngIf="order.statusOrder === 'PREPARADO'"
+              (click)="btnDeliveredOrder(order)">
               ENTREGADO
             </button>
           </div>
         </div>
       </section>
+    </section>
+    <!-- Aqui empieza el modal resumen de la orden -->
+    <section class="contResumen" *ngIf="modalOrder">
+      <div class="contClient">
+        <div class="clientTxt">CLIENTE:</div>
+        <span id="clientName" class="clientName">{{ clientName }}</span>
+      </div>
+      <div class="contItemsOrder">
+        <div class="orderResumen">
+          <section class="contItemReceipt" *ngFor="let item of fullOrder">
+            <div class="itemDescription">
+              <span #itemName class="itemName">{{item.product}}</span>
+              <span #itemPrice class="itemPrice">${{item.subTotal}}</span> <br>
+            </div>
+          </section>
+        </div>
+        <div class="contFooterResumen">
+          <span class="totalCash">Total= ${{total}}</span>
+          <button (click)="closeModalOrder()" id="closeDetail" class="checkOrder">ACEPTAR</button>
+        </div>
+      </div>
     </section>
   </section>
 </section>

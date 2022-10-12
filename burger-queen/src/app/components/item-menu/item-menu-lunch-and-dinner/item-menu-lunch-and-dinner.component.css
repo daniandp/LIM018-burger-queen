@@ -49,7 +49,7 @@
     justify-content: center;
 }
 
-/* >>>>>>>>>>>>>>>>>>>> AQUI COMIENZA EL MODAL <<<<<<<<<<<<<<<<<<<<<<<< */
+/* >>>>>>>>>>>>>>>>>>>> AQUI COMIENZA EL MODAL DE LAS HAMBURGUESAS <<<<<<<<<<<<<<<<<<<<<<<< */
 
 .contModalBurgers {
     display: flex;
@@ -62,8 +62,9 @@
     box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.25);
     border-radius: 0.5rem;
     position: absolute;
-    top: 20%;
-    right: 5%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .contHeaderModal {

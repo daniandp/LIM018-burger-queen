@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Firestore, collection, addDoc, collectionData, getDoc, updateDoc, doc } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, collectionData, updateDoc, doc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import Menu from './interfaces/menu.interface';
 
@@ -24,11 +24,7 @@ export class ConnectionServiceService {
     return updateDoc(orderRef, {statusOrder: status})
   } 
 
-  // getUsername(){
-  //   this.db.getUsername(someUID).subscribe(
-  //     (data) => this.username = data.exists ? data.data().username : undefined
-  //   }
-  // }
+
   $conector = new EventEmitter<any>();
   $modal = new EventEmitter<any>();
   $lunchAndDinner = new EventEmitter<any>();

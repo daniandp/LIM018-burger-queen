@@ -104,10 +104,14 @@
     text-shadow: 0 0 6px #000000, 0 0 2px #000000;
     box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.25);
 }
+
+/* <<<<<<<<<<<<<<<< AQUI COMIENZAN EL MODAL DE ORDEN VACÍA / ORDEN ENVIADA EXITOSAMENTE >>>>>>>>>>>>>>>>>>>>>>>>*/
 .modalTotalVoid {
   display: flex;
   flex-direction: column;
-  transform: translate(50%, 50%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 50vw;
   height: 30vh;
   background: rgba(195, 169, 131, 1);

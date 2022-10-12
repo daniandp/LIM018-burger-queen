@@ -15,6 +15,10 @@ export class ContainerTicketsComponent implements OnInit {
   menu!: Menu[];
   statusMenu: Array<any> = [];
   filteredStatus: Array<any> = [];
+  fullOrder: Array<any> = [];
+  total: number = 0;
+  clientName: string = '';
+  modalOrder: boolean = true;
 
   constructor(private renderer2: Renderer2, private connector: ConnectionServiceService) { 
     this.menu = [
@@ -31,8 +35,8 @@ export class ContainerTicketsComponent implements OnInit {
   ngOnInit(): void { 
     this.connector.getOrder().subscribe(menu => {
       this.filteredStatus = [];
-      const btnDelivered = this.btnShowDelivered.nativeElement
-      const btnStatusOrder = this.btnStatusList.nativeElement
+      const btnDelivered = this.btnShowDelivered.nativeElement;
+      const btnStatusOrder = this.btnStatusList.nativeElement;
       this.renderer2.addClass(btnStatusOrder, 'btnSelected');
       this.renderer2.removeClass(btnDelivered, 'btnSelected');
       this.menu = menu;
@@ -70,24 +74,38 @@ export class ContainerTicketsComponent implements OnInit {
         this.statusMenu.push(elem);
       }
     })
-    console.log(this.statusMenu, 'ARRAY DE ORDENES ENTREGADAS ');
   }
   
   showStatusList() {
     this.filteredStatus = [];
-    const btnDelivered = this.btnShowDelivered.nativeElement
-    const btnStatusOrder = this.btnStatusList.nativeElement
+    const btnDelivered = this.btnShowDelivered.nativeElement;
+    const btnStatusOrder = this.btnStatusList.nativeElement;
     this.statusListSwitch = true;
     this.deliveredSwitch = false;
     this.renderer2.addClass(btnStatusOrder, 'btnSelected');
     this.renderer2.removeClass(btnDelivered, 'btnSelected');
     this.filterOrderStatus();
-    console.log(this.statusMenu, "filtradosss!!")
-    
 }
   
   async btnDeliveredOrder(order: any) {
     const response = await this.connector.changeStatus(order, 'ENTREGADO')
-   }
+  }
+  
+  openModalOrder(order: any) {
+    this.modalOrder = true;
+    this.fullOrder = order.fullOrder;
+    this.clientName = order.clientName;
+    console.log(this.fullOrder, 'FULL ORDER');
+    this.fullOrder.forEach((elem) => {
+      this.total += elem.subTotal;
+    })
+
+    console.log(this.total, 'TOTAL');
+    
+  }
+
+  closeModalOrder() {
+    this.modalOrder = false;
+  }
   
 }
