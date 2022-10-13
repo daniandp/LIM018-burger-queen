@@ -100,13 +100,13 @@
           </div>
         </div>
         <!-- MODAL DE ACEPTAR O CANCELAR EL BORRADO DE LA ORDEN -->
-        <section *ngIf="modalCancelOrder" class="modalTotalVoid">
+        <div *ngIf="modalCancelOrder" class="modalTotalVoid">
           <h1>¿Desea cancelar la orden?</h1>
           <div class="contAceptOrCancelOrder">
             <button class="btn" (click)="btnDeleteOrder(order)">SI</button>
             <button class="btn" (click)="closeModalCancelOrder()">NO</button>
           </div>
-        </section>
+        </div>
       </section>
     </section>
     

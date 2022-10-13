@@ -19,7 +19,7 @@ export class ContainerTicketsComponent implements OnInit {
   total: number = 0;
   clientName: string = '';
   modalOrder: boolean = false;
-  modalCancelOrder: boolean = false;
+  modalCancelOrder: boolean = true;
 
   constructor(private renderer2: Renderer2, private connector: ConnectionServiceService) { 
     this.menu = [
