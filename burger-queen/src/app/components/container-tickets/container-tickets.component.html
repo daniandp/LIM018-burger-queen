@@ -24,7 +24,7 @@
         </div>
         <div class="contInfoOrder">
           <div class="contInfoClient">
-            <span id="clientName" class="clientName">{{
+            <span class="clientNameTicket">{{
               order.clientName
               }}</span>
           </div>
@@ -53,10 +53,14 @@
             <button (click)="openModalOrder(order)" type="button" id="idCheckOrder" class="checkOrder">
               VER
             </button>
-            <button type="button" id="idDeliveredOrder" class="deliveredOrder" *ngIf="order.statusOrder === 'PREPARADO'"
+            <button type="button" class="deliveredOrder" *ngIf="order.statusOrder === 'PREPARADO'"
               (click)="btnDeliveredOrder(order)">
               ENTREGADO
             </button>
+            <button type="button" class="deliveredOrder cancelOrder" *ngIf="order.statusOrder === 'PENDIENTE'"
+            (click)="openModalCancelOrder()">
+            CANCELAR
+          </button>
           </div>
         </div>
       </section>
@@ -65,14 +69,20 @@
     <section class="contResumen" *ngIf="modalOrder">
       <div class="contClient">
         <div class="clientTxt">CLIENTE:</div>
-        <span id="clientName" class="clientName">{{ clientName }}</span>
+        <span class="clientName">{{ clientName }}</span>
       </div>
       <div class="contItemsOrder">
         <div class="orderResumen">
+          <div class="titleOrder">
+            <span class="itemStyle spanCant">Cant.</span>
+            <span class="itemStyle spanProd">Producto</span>
+            <span class="itemStyle spanPrice">Precio</span>
+          </div>
           <section class="contItemReceipt" *ngFor="let item of fullOrder">
             <div class="itemDescription">
-              <span #itemName class="itemName">{{item.product}}</span>
-              <span #itemPrice class="itemPrice">${{item.subTotal}}</span> <br>
+              <span class="itemStyle spanCant">{{item.cont}}</span>
+              <span class="itemStyle spanProd">{{item.product}}</span>
+              <span class="itemStyle spanPrice">${{item.subTotal}}</span>
             </div>
           </section>
         </div>
@@ -83,4 +93,12 @@
       </div>
     </section>
   </section>
+  <section  *ngIf="modalCancelOrder" class="modalTotalVoid">
+        <h1>¿Desea cancelar la orden?</h1>
+        <div> 
+          <!-- PENDIENTE MODIFICAR EL ESTILO DEL DIV DE LA LINEA 98 -->
+          <button class="btn">SI</button>
+          <button class="btn" (click)="closeModalCancelOrder()">NO</button>
+        </div>
+    </section>
 </section>

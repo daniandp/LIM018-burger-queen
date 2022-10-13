@@ -18,7 +18,8 @@ export class ContainerTicketsComponent implements OnInit {
   fullOrder: Array<any> = [];
   total: number = 0;
   clientName: string = '';
-  modalOrder: boolean = true;
+  modalOrder: boolean = false;
+  modalCancelOrder: boolean = false;
 
   constructor(private renderer2: Renderer2, private connector: ConnectionServiceService) { 
     this.menu = [
@@ -96,6 +97,7 @@ export class ContainerTicketsComponent implements OnInit {
     this.fullOrder = order.fullOrder;
     this.clientName = order.clientName;
     console.log(this.fullOrder, 'FULL ORDER');
+    this.total = 0;
     this.fullOrder.forEach((elem) => {
       this.total += elem.subTotal;
     })
@@ -107,5 +109,15 @@ export class ContainerTicketsComponent implements OnInit {
   closeModalOrder() {
     this.modalOrder = false;
   }
+
+  openModalCancelOrder() {
+    this.modalCancelOrder = true;
+  }
+
+  closeModalCancelOrder() {
+    this.modalCancelOrder = false;
+  }
+
+
   
 }

@@ -58,12 +58,7 @@ export class ItemMenuLunchAndDinnerComponent implements OnInit {
 
   // Método para cerrar el modal y capturar los datos seleccionados y enviarlo a itemBill
   closeModal() {
-    // Si el valor es undefines el modal permanece abierto, si no se cierra
-    if (this.selectValue === undefined) {
-      this.modalSwitch = true;
-    } else {
-      this.modalSwitch = false;
-    }
+    
     // Si se selecciona queso
     if (this.cheeseValue && !this.eggValue) {
       this.hamburger = new newBurger(
@@ -95,8 +90,15 @@ export class ItemMenuLunchAndDinnerComponent implements OnInit {
         1
       )
     }
-    // Emitimos el OBJETO de la hamburguesa a itemBill
-    this.connector.$lunchAndDinner.emit(this.hamburger); 
+    // Si el valor es undefines el modal permanece abierto, si no se cierra
+    if (this.selectValue === undefined) {
+      this.modalSwitch = true;
+    } else {
+      this.modalSwitch = false;
+      // Emitimos el OBJETO de la hamburguesa a itemBill
+      this.connector.$lunchAndDinner.emit(this.hamburger); 
+    }
+   
     // Reiniciamos los valores de los checkbox para limpiarlos
     this.cheeseValue = ''
     this.eggValue = ''
