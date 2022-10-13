@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Firestore, collection, addDoc, collectionData, updateDoc, doc, deleteDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import Menu from './interfaces/menu.interface';
+import Order from './interfaces/menu.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -9,22 +9,22 @@ import Menu from './interfaces/menu.interface';
 export class ConnectionServiceService {
 
   constructor(private firestore: Firestore) { }
-  addOrder(order: Menu) {
+  addOrder(order: Order) {
     const orderRef = collection(this.firestore, 'orderClient');
     return addDoc(orderRef, order);
   }
 
-  getOrder(): Observable<Menu[]> {
+  getOrder(): Observable<Order[]> {
     const orderRef = collection(this.firestore, 'orderClient'); 
-    return collectionData(orderRef, { idField: 'id' }) as Observable<Menu[]>;
+    return collectionData(orderRef, { idField: 'id' }) as Observable<Order[]>;
   }
 
-  changeStatus(order: Menu, status:string) {
+  changeStatus(order: Order, status:string) {
     const orderRef = doc(this.firestore, `orderClient/${order.id}`);
     return updateDoc(orderRef, {statusOrder: status})
   } 
 
-  deleteOrder(order: Menu) {
+  deleteOrder(order: Order) {
     const orderRef = doc(this.firestore, `orderClient/${order.id}`);
     return deleteDoc(orderRef);
   }
