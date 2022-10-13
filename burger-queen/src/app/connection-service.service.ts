@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Firestore, collection, addDoc, collectionData, updateDoc, doc } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, collectionData, updateDoc, doc, deleteDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import Menu from './interfaces/menu.interface';
 
@@ -24,6 +24,10 @@ export class ConnectionServiceService {
     return updateDoc(orderRef, {statusOrder: status})
   } 
 
+  deleteOrder(order: Menu) {
+    const orderRef = doc(this.firestore, `orderClient/${order.id}`);
+    return deleteDoc(orderRef);
+  }
 
   $conector = new EventEmitter<any>();
   $modal = new EventEmitter<any>();

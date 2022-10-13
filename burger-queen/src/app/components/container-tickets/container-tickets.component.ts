@@ -86,12 +86,17 @@ export class ContainerTicketsComponent implements OnInit {
     this.renderer2.addClass(btnStatusOrder, 'btnSelected');
     this.renderer2.removeClass(btnDelivered, 'btnSelected');
     this.filterOrderStatus();
-}
-  
-  async btnDeliveredOrder(order: any) {
-    const response = await this.connector.changeStatus(order, 'ENTREGADO')
   }
   
+  async btnDeliveredOrder(order: any) {
+    const response = await this.connector.changeStatus(order, 'ENTREGADO');
+  }
+  
+  async btnDeleteOrder(order: any) {
+    const response = await this.connector.deleteOrder(order);
+    this.closeModalCancelOrder();
+  }
+
   openModalOrder(order: any) {
     this.modalOrder = true;
     this.fullOrder = order.fullOrder;

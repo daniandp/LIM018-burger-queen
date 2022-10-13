@@ -164,7 +164,7 @@
     text-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
 }
 
-.clientName, .btn, .totalCash {
+.clientName, .btn, .totalCash, .btnCancelorAcceptOrder {
     display: flex;
     background-color: #fff;
     width: 40%;
@@ -308,7 +308,7 @@
 }
 
 /* <<<<<<<<<<<<<<<< AQUI COMIENZAN EL MODAL DE CANCELAR LA ORDEN >>>>>>>>>>>>>>>>>>>>>>>>*/
-.modalTotalVoid, .modalTotalVoid > div {
+.modalTotalVoid{
     display: flex;
     flex-direction: column;
     top: 50%;
@@ -322,6 +322,20 @@
     position: absolute;
     align-items: center;
   }
+
+  .contAceptOrCancelOrder {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: space-around;
+    background-color: red;
+  }
+
+  .contAceptOrCancelOrder > button {
+    font-size: x-large;
+  }
+  
   .modalTotalVoid > h1 {
     font-family: "Slackey", cursive;
     text-align: center;
@@ -331,14 +345,5 @@
     text-shadow: 0 0 6px #000000, 0 0 2px #000000;
   }
 
-  .modalTotalVoid > div {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .modalTotalVoid > div > button {
-    margin-top: -2rem;
-    height: 20%;
-  }
 
   /* PENDIENTE MODIFICAR EL ESTILO DEL DIV DE LA LINEA 98 */
