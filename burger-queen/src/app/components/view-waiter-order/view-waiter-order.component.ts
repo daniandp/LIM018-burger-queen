@@ -68,7 +68,7 @@ export class ViewWaiterOrderComponent implements OnInit {
       this.sendFullOrder = {
         clientName: this.clientName,
         totalPrice: this.totalPrice,
-        statusOrder: 'PREPARADO',
+        statusOrder: 'PENDIENTE',
         fullOrder: this.arrOrder,
       }
       this.orderSuccess = true;
