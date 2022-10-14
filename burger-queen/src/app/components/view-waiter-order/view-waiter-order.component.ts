@@ -33,12 +33,6 @@ export class ViewWaiterOrderComponent implements OnInit {
 
     this.connector.$sendArrOrder.subscribe((valor: any) => {
       this.arrOrder = valor;
-      /* this.sendArrOrder = new sendArrOrder (
-        this.clientName,
-        this.totalPrice,
-        "PENDIENTE",
-        valor,
-      )   */
     })
   }
 
@@ -63,6 +57,10 @@ export class ViewWaiterOrderComponent implements OnInit {
   }
 
   async sendOrder() {
+    const today = new Date();
+    const dateAndHour = today.toLocaleString();
+    const dateSeparator = dateAndHour.split(' ');
+    console.log(dateAndHour, 'RADIO ROCHELA');
     if(this.totalPrice !== 0 ) {
       this.totalVoid = false;
       this.sendFullOrder = {
@@ -70,6 +68,8 @@ export class ViewWaiterOrderComponent implements OnInit {
         totalPrice: this.totalPrice,
         statusOrder: 'PENDIENTE',
         fullOrder: this.arrOrder,
+        date: dateSeparator[0],
+        hour: dateSeparator[1],
       }
       this.orderSuccess = true;
       const response = await this.connector.addOrder(this.sendFullOrder)

@@ -1,7 +1,7 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit, ViewChild, Renderer2, ElementRef, AfterViewInit } from '@angular/core';
 import { ConnectionServiceService } from 'src/app/connection-service.service';
-import Menu from 'src/app/interfaces/menu.interface';
+import Order from 'src/app/interfaces/menu.interface';
 @Component({
   selector: 'app-container-tickets',
   templateUrl: './container-tickets.component.html',
@@ -10,19 +10,19 @@ import Menu from 'src/app/interfaces/menu.interface';
 export class ContainerTicketsComponent implements OnInit {
   deliveredSwitch: boolean = false;
   statusListSwitch: boolean = true;
-  @ViewChild('btnDelivered') btnShowDelivered!: ElementRef;
-  @ViewChild('btnStatusList') btnStatusList!: ElementRef;
-  menu!: Menu[];
+  modalOrder: boolean = false;
+  modalCancelOrder: boolean = false;
+  total: number = 0;
+  clientName: string = '';
+  orderByClient!: Order[]; // MODELO DE MENÚ DE LA INTERFACE
   statusMenu: Array<any> = [];
   filteredStatus: Array<any> = [];
   fullOrder: Array<any> = [];
-  total: number = 0;
-  clientName: string = '';
-  modalOrder: boolean = false;
-  modalCancelOrder: boolean = true;
+  @ViewChild('btnDelivered') btnShowDelivered!: ElementRef;
+  @ViewChild('btnStatusList') btnStatusList!: ElementRef;
 
   constructor(private renderer2: Renderer2, private connector: ConnectionServiceService) { 
-    this.menu = [
+    /* this.menu = [
       {
         clientName: 'Cliente',
         totalPrice: 10,
@@ -30,23 +30,25 @@ export class ContainerTicketsComponent implements OnInit {
         fullOrder: [],
         
       }
-    ]
+    ] */
   }
 
   ngOnInit(): void { 
-    this.connector.getOrder().subscribe(menu => {
-      this.filteredStatus = [];
+    this.connector.getOrder().subscribe(order => { // OBTENEMOS LA ORDEN DE FIRESTORE
+      this.filteredStatus = []; // LIMPIAMOS EL ARRAY PARA QUE NO SE DUPLIQUEN AL HACER PUSH  
+      // ESTILO DE LOS BOTONES CUANDO SE SELECCIONAN
       const btnDelivered = this.btnShowDelivered.nativeElement;
       const btnStatusOrder = this.btnStatusList.nativeElement;
       this.renderer2.addClass(btnStatusOrder, 'btnSelected');
       this.renderer2.removeClass(btnDelivered, 'btnSelected');
-      this.menu = menu;
+      this.orderByClient = order;
       this.filterOrderStatus();
     })
   }
 
+  // MÉTODO PARA FILTRAR Y ORDENAR LAS ORDENES SEGÚN SI SU ESTADO ES PENDIENTE O PREPARADO
   filterOrderStatus() {
-    this.menu.forEach((elem) => {
+    this.orderByClient.forEach((elem) => {
       if(elem.statusOrder === 'PENDIENTE' || elem.statusOrder === 'PREPARADO') {
         this.filteredStatus.push(elem);
       }
@@ -62,6 +64,7 @@ export class ContainerTicketsComponent implements OnInit {
     })
   }
 
+  // MÉTODO PARA MOSTRAR SOLO LAS ORDENES ENTREGADAS
   showDelivered() {
     this.statusMenu = [];
     const btnDelivered = this.btnShowDelivered.nativeElement;
@@ -70,13 +73,14 @@ export class ContainerTicketsComponent implements OnInit {
     this.statusListSwitch = false;
     this.renderer2.addClass(btnDelivered, 'btnSelected');
     this.renderer2.removeClass(btnStatusOrder, 'btnSelected');    
-    this.menu.forEach((elem) => {
+    this.orderByClient.forEach((elem) => {
       if(elem.statusOrder === 'ENTREGADO') {
         this.statusMenu.push(elem);
       }
     })
   }
-  
+
+  // MÉTODO PARA MOSTRAR SOLO LAS ORDENES PENDIENTES Y PREPARADAS
   showStatusList() {
     this.filteredStatus = [];
     const btnDelivered = this.btnShowDelivered.nativeElement;
@@ -87,17 +91,21 @@ export class ContainerTicketsComponent implements OnInit {
     this.renderer2.removeClass(btnDelivered, 'btnSelected');
     this.filterOrderStatus();
   }
-  
+
+
+  // MÉTODO PARA CAMBIAR EL ESTADO DE UNA ORDEN PREPARADA A ENTREGADA
   async btnDeliveredOrder(order: any) {
     const response = await this.connector.changeStatus(order, 'ENTREGADO');
   }
   
+  // MÉTODO PARA ELIMINAR UNA ORDEN PENDIENTE
   async btnDeleteOrder(order: any) {
     const response = await this.connector.deleteOrder(order);
     this.closeModalCancelOrder();
   }
 
-  openModalOrder(order: any) {
+  // MÉTODOS PARA ABRIR Y CERRAR LOS MODALES
+  openModalOrder(order: any) { // Muestra el resumen de la orden en el botón de ver
     this.modalOrder = true;
     this.fullOrder = order.fullOrder;
     this.clientName = order.clientName;
@@ -106,23 +114,18 @@ export class ContainerTicketsComponent implements OnInit {
     this.fullOrder.forEach((elem) => {
       this.total += elem.subTotal;
     })
-
-    console.log(this.total, 'TOTAL');
-    
-  }
-
-  closeModalOrder() {
-    this.modalOrder = false;
   }
 
   openModalCancelOrder() {
     this.modalCancelOrder = true;
   }
 
+  closeModalOrder() {
+    this.modalOrder = false;
+  }
+
   closeModalCancelOrder() {
     this.modalCancelOrder = false;
   }
-
-
   
 }
