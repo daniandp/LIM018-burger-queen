@@ -1,0 +1,123 @@
+.contChefView {
+    display: flex;
+    background: red;
+    height: 80vh;
+    padding: 1rem;
+    
+}
+
+.contResumen {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 32%;
+    margin: 0 auto;
+    background: rgba(195, 169, 131);
+    border-radius: 0.5rem;
+    box-shadow: 5px 5px 5px 5px rgb(0 0 0 / 25%);
+}
+
+.contClient {
+    display: flex;
+    height: 15%;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem ;
+}
+
+.contClient > span, .checkOrder > span {
+    font-size: x-large;
+}
+
+.clientTxt {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: x-large;
+    text-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+}
+
+.clientName {
+    display: flex;
+    background-color: #fff;
+    width: 40%;
+    height: 60%;
+    box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.25);
+    border-radius: 1rem;
+    border-style: none;
+    color: #000;
+    font-size: medium;
+    text-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    font-family: "Slackey", cursive;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .clientName {
+    font-size: xx-small;
+    width: 50%;
+  }
+
+  .contItemsOrder {
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.45);
+    border-radius: 0.5rem;
+    width: 90%;
+    height: 80%;
+    margin: auto;
+  }
+
+  .orderResumen {
+    width: 100%;
+    height: 85%;
+    overflow: scroll;
+  }
+
+  .contFooterResumen {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 10%;
+    padding: 0.8rem 0.01rem;
+  }
+
+  
+  .contItemReceipt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 1rem;
+}
+
+.titleOrder {
+    display: flex;
+    width: 93.8%;
+    margin: 1rem 1rem 0.8rem 1rem;
+    border-bottom: dotted;
+    background: rgba(255, 255, 255, 0.45);
+    border-radius: 0.5rem 0.5rem 0;
+    border-width: .3rem;
+    border-color: rgba(195, 169, 131);
+}
+
+.titleOrder > span {
+    font-size: larger;
+}
+
+.spanCant, .spanProd {
+    width: 15%;
+    line-height: 5vh;
+    margin: auto;
+    text-align: center;
+    border-right: dotted;
+    border-width: .3rem;
+    border-color: rgba(195, 169, 131);
+}
+
+.spanProd {
+    width: 60%;
+    text-align: left;
+    padding-left: 0.5rem;
+}

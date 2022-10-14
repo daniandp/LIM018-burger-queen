@@ -14,15 +14,12 @@ export class WelcomeComponent implements OnInit {
   
 
   changeViewClientName() {
-    this.router.navigateByUrl('/nameClient')
-      .then(() => {
-        console.log(`Navegación exitosa al client name`);
-      })
-      .catch((error) => {
-        console.log(`Falló la navegación al client name: ${error.message}`);
-      });
+    this.router.navigate(['/nameClient']);  
   }
 
+  changeViewChef() {
+    this.router.navigate(['/viewChef']);  
+  }
 
  /*  initWaiter(): void {
    const btnWaiter = this.waiter.nativeElement
