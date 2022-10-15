@@ -3,7 +3,8 @@
     background: red;
     height: 80vh;
     padding: 1rem;
-    
+    flex-wrap: wrap;
+    overflow: hidden;
 }
 
 .contResumen {
@@ -11,7 +12,8 @@
     flex-direction: column;
     height: 100%;
     width: 32%;
-    margin: 0 auto;
+    margin: 0 0.3rem;
+    margin-bottom: 1rem;
     background: rgba(195, 169, 131);
     border-radius: 0.5rem;
     box-shadow: 5px 5px 5px 5px rgb(0 0 0 / 25%);
@@ -22,9 +24,13 @@
     height: 15%;
     align-items: center;
     justify-content: center;
-    gap: 2rem ;
+    gap: 1rem ;
+    padding: 0 1.3rem;
 }
 
+.contClient > div {
+  width: 70%;
+}
 .contClient > span, .checkOrder > span {
     font-size: x-large;
 }
@@ -32,7 +38,7 @@
 .clientTxt {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    font-size: x-large;
+    font-size: large;
     text-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
 }
 
@@ -46,9 +52,10 @@
     border-style: none;
     color: #000;
     font-size: medium;
-    text-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
     cursor: pointer;
-    font-family: "Slackey", cursive;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
     align-items: center;
     justify-content: center;
   }
@@ -88,13 +95,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     margin: 0 1rem;
 }
 
 .titleOrder {
     display: flex;
     width: 93.8%;
-    margin: 1rem 1rem 0.8rem 1rem;
+    margin: 0.5rem auto;
     border-bottom: dotted;
     background: rgba(255, 255, 255, 0.45);
     border-radius: 0.5rem 0.5rem 0;
@@ -106,8 +114,14 @@
     font-size: larger;
 }
 
+.itemStyle {
+  font-size: medium;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
 .spanCant, .spanProd {
-    width: 15%;
+    width: 20%;
     line-height: 5vh;
     margin: auto;
     text-align: center;
@@ -117,7 +131,29 @@
 }
 
 .spanProd {
-    width: 60%;
+    width: 75%;
     text-align: left;
-    padding-left: 0.5rem;
+    border: none;
+
+}
+
+.itemDescription {
+  display: flex;
+  width: 100%;
+  border-bottom: dotted;
+  border-width: .3rem;
+  border-color: rgba(195, 169, 131);
+}
+
+.checkOrder {
+  border: none;
+  border-radius: 0.5rem;
+  height: 100%;
+  width: 55%;
+  font-family: "Slackey", cursive;
+  color: #fff;
+  font-size: x-large;
+  background-color: #FFB307;
+  text-shadow: 0 0 6px #000000, 0 0 2px #000000;
+  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.25);
 }
