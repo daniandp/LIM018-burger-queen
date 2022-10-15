@@ -60,7 +60,6 @@ export class ViewWaiterOrderComponent implements OnInit {
     const today = new Date();
     const dateAndHour = today.toLocaleString();
     const dateSeparator = dateAndHour.split(' ');
-    console.log(dateAndHour, 'RADIO ROCHELA');
     if(this.totalPrice !== 0 ) {
       this.totalVoid = false;
       this.sendFullOrder = {
@@ -70,6 +69,7 @@ export class ViewWaiterOrderComponent implements OnInit {
         fullOrder: this.arrOrder,
         date: dateSeparator[0],
         hour: dateSeparator[1],
+        // dateAndHour: dateAndHour,
       }
       this.orderSuccess = true;
       const response = await this.connector.addOrder(this.sendFullOrder)

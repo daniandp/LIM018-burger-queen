@@ -32,6 +32,7 @@
   </div>
   <section>
     <section class="contTickets" *ngIf="deliveredSwitch">
+      <!-- RECORRIDO PARA LOS PEDIDOS ENTREGADOS -->
       <section class="contTicketOrder" *ngFor="let order of statusMenu">
         <div
           class="contStatusOrder"
@@ -58,6 +59,7 @@
         </div>
       </section>
     </section>
+          <!-- RECORRIDO PARA LOS PEDIDOS PREPARADOS -->
     <section class="contTickets" *ngIf="statusListSwitch">
       <section class="contTicketOrder" *ngFor="let order of statusMenu">
         <div

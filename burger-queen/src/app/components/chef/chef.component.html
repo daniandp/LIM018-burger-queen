@@ -1,30 +1,43 @@
 <app-header-waiter></app-header-waiter>
 
 <section class="contChefView">
-    <section class="contResumen">
+  <section class="contResumen" *ngFor="let order of pendingOrders">
     <div class="contClient">
-        <div>
-            <div class="clientTxt">Fecha:</div>
-            <div class="clientTxt">Hora:</div>
-        </div>
-        <span class="clientName">Timer</span>
+      <div>
+        <div class="clientTxt">Fecha: {{ order.date }}</div>
+        <div class="clientTxt">Hora: {{ order.hour }}</div>
+      </div>
+      <span class="timer">{{ order.clientName }}</span>
     </div>
     <div class="contItemsOrder">
-        <div class="orderResumen">
+      <div class="orderResumen">
         <div class="titleOrder">
-            <span class="itemStyle spanCant">Cant.</span>
-            <span class="itemStyle spanProd">Producto</span>
+          <span class="itemStyle spanCant">Cant.</span>
+          <span class="itemStyle spanProd">Producto</span>
         </div>
         <section class="contItemReceipt">
-            <div class="itemDescription">
-                <span class="itemStyle spanCant">2</span>
-                <span class="itemStyle spanProd">agua</span>
-            </div>
+          <div class="itemDescription" *ngFor="let item of order.fullOrder">
+            <span class="itemStyle spanCant">{{item.cont}}</span>
+            <span class="itemStyle spanProd">{{item.product}}</span>
+          </div>
         </section>
-        </div>
-        <div class="contFooterResumen">
-        <button id="closeDetail" class="checkOrder">ENTREGAR</button>
-        </div>
+      </div>
+      <div class="contFooterResumen">
+        <button
+          id="closeDetail"
+          class="checkOrder"
+          (click)="openModalConfirm(order)"
+        >
+          ENTREGAR
+        </button>
+      </div>
     </div>
-    </section>
+    <section class="modalTotalVoid" *ngIf="modalChef">
+        <h1>¿ESTÁ SEGURO?</h1>
+        <div class="contAceptOrCancelOrder">
+          <button class="btn" (click)="sendOrderReady(orderByClient)">SI</button>
+          <button class="btn" (click)="closeModalConfirm()">NO</button>
+        </div>
+    </section>  
+  </section>
 </section>
