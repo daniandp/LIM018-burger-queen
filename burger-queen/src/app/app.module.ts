@@ -15,7 +15,8 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { ItemMenuLunchAndDinnerComponent } from './components/item-menu/item-menu-lunch-and-dinner/item-menu-lunch-and-dinner.component';
-import { ChefComponent } from './chef/chef.component';
+import { ChefComponent } from './components/chef/chef.component';
+
 @NgModule({
   declarations: [
     AppComponent,
