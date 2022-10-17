@@ -69,7 +69,7 @@ export class ViewWaiterOrderComponent implements OnInit {
         fullOrder: this.arrOrder,
         date: dateSeparator[0],
         hour: dateSeparator[1],
-        // dateAndHour: dateAndHour,
+        createdAt: today.getTime(),
       }
       this.orderSuccess = true;
       const response = await this.connector.addOrder(this.sendFullOrder)

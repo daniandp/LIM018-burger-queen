@@ -3,10 +3,10 @@
         <div class="contLogo">
             <img src="./assets/img/logoBurgerQ.png" alt="logo Burger Queen" (click) ="returnToWelcome()">
         </div>
-        <div class="contTitle">
+        <div #containerHeader class="contTitle">
             <h1>Burger Queen</h1>
         </div>
-        <div class="contBtnsHeader">
+        <div class="contBtnsHeader" *ngIf="viewChefInactive">
             <button #btnTakeOrder type="button" (click)="goToTakeOrder()" class="btnSelected btn">TOMAR ORDEN</button>
             <button #btnListOrder type="button" (click)="goToStatusList()" class="btn">LISTA DE PEDIDOS</button>
         </div>

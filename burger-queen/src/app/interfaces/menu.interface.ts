@@ -6,4 +6,5 @@ export default interface Order {
     fullOrder: Array<any>;
     date?: string;
     hour?: string;
+    createdAt: number;
 }

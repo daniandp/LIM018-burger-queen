@@ -9,10 +9,19 @@ import { Router } from '@angular/router';
 export class HeaderWaiterComponent implements OnInit {
   @ViewChild('btnTakeOrder') takeOrder!: ElementRef;
   @ViewChild('btnListOrder') listOrder!: ElementRef;
+  @ViewChild('containerHeader') contHeader!: ElementRef;
  
   constructor(private router: Router, private renderer2: Renderer2) { }
+  viewChefInactive: boolean = true;
+
+
+  ngOnInit(): void { 
+    if (location.pathname === '/viewChef') {
+      this.viewChefInactive = false;
+    }
+    
+  }
   
-  ngOnInit(): void { }
   // retorna la ruta a welcome
   returnToWelcome() {
     this.router.navigate(['/welcome']);
@@ -23,7 +32,12 @@ export class HeaderWaiterComponent implements OnInit {
   goToTakeOrder() {
     this.router.navigate(['/nameClient']);
   }
+
   ngAfterViewInit(): void {
+    if (location.pathname === '/viewChef') {
+      this.renderer2.setStyle(this.contHeader.nativeElement, 'transform',  'translate(-135%, 0%)' )
+    }
+    console.log(this.contHeader, 'cont header');
     const btnTakeOrder = this.takeOrder.nativeElement;
     const btnListOrder = this.listOrder.nativeElement;
     if (location.pathname === '/nameClient') {
@@ -32,7 +46,7 @@ export class HeaderWaiterComponent implements OnInit {
     } else if (location.pathname === '/containerOrders') {
       this.renderer2.addClass(btnListOrder, 'btnSelected');
       this.renderer2.removeClass(btnTakeOrder, 'btnSelected');
-    }
-    console.log(location.pathname,' RUTA EN AFTER ')
+    } 
   }
+
 }
