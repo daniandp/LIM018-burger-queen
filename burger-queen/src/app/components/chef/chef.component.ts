@@ -50,17 +50,16 @@ export class ChefComponent implements OnInit {
 
   // MÉTODO PARA EL TIMER DE LAS ORDENES
   timerByOrder(orderCreatedAt: any) {
-    this.seconds = Math.floor((new Date().getTime() - orderCreatedAt)/1000);
+    this.seconds = Math.floor((new Date().getTime() - orderCreatedAt)/1000); // DIFERENCIA ENTRE HORA ACTUAL Y LA HORA EN QUE SE CREÓ LA ORDEN
     this.seconds++;
-    let hrs = Math.floor(this.seconds/3600);
-    let mins = Math.floor((this.seconds - (hrs * 3600))/60); 
-    let secs = this.seconds % 60;
+    let hrs = Math.floor(this.seconds/3600); // CANTIDAD DE HORAS(MATH FLOOR REDONDEA HACIA ABAJO, NO TRAE DECIMALES)
+    let mins = Math.floor((this.seconds - (hrs * 3600))/60); // A LOS SEGUNDOS SE LE RESTA LA CANTIDAD DE HORAS EN SEGUNDOS Y LA DIFERENCIA SE DIVIDE ENTRE 60
+    let secs = this.seconds % 60; // EL RECIDUO DE LA DIVISIÓN DE LOS SEGUNDOS ENTRE 60 
     return hrs + ':' + mins + ':' + secs;
   }
 
   // MÉTODO PARA ORDENAR LOS PEDIDOS POR HORA Y FECHA DE CREACIÓN, SE MUESTRAN PRIMERO LOS MÁS ANTIGUOS 
   showByOrder(order: any) {
-    console.log(order, 'order show by order');
     this.pendingOrders = this.pendingOrdersToFilter.sort(function (a, b) {
         if (a.createdAt > b.createdAt){
           return 1;
