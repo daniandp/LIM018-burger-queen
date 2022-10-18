@@ -1,4 +1,3 @@
-import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ConnectionServiceService } from 'src/app/connection-service.service';
 
@@ -9,6 +8,7 @@ import { ConnectionServiceService } from 'src/app/connection-service.service';
 })
 export class ChefComponent implements OnInit {
   modalChef: boolean = false;
+  pendingOrdersToFilter: Array<any> = [];
   pendingOrders: Array<any> = [];
   orderByClient: Array<any> = [];
   hours: number = 0;
@@ -22,12 +22,25 @@ export class ChefComponent implements OnInit {
       this.pendingOrders = [];
       order.forEach((elem) => { // MÉTODO PARA MOSTRAR SOLO LAS ORDENES PENDIENTES
         if(elem.statusOrder === 'PENDIENTE') {
-          this.pendingOrders.push(elem); //<<< SE ALMACENAN SOLO LAS ORDENES PENDIENTES
-          setInterval(this.timerByOrder, 1000);
-
+          this.pendingOrdersToFilter.push(elem); //<<< SE ALMACENAN SOLO LAS ORDENES PENDIENTES
+          setInterval(this.timerByOrder, 1000)
         }
-      })        
+      })
+      this.showByOrder(order);        
     })
+  }
+
+  showByOrder(order: any) {
+     this.pendingOrders = this.pendingOrdersToFilter.sort(function(a, b){
+      if (a.createdAt > b.createdAt){
+         return 1;
+      }else if(b.createdAt > a.createdAt){
+         return -1;
+      }
+     
+      return 0;
+    })
+
   }
 
   openModalConfirm(order: any) {
@@ -45,58 +58,11 @@ export class ChefComponent implements OnInit {
   }
 
   timerByOrder(orderCreatedAt: any) {
-    let currentHour: any = new Date();
-    
-    let seconds = orderCreatedAt - Date.parse(currentHour) /1000
-    console.log(seconds, 'SEGUNDOS');
-
-    let hour: any = Math.floor(seconds / 3600);
-    hour = hour < 10 ? '0' + hour : hour;
-    let minute: any = Math.floor((seconds / 60) % 60);
-    minute = minute < 10 ? '0' + minute : minute;
-    let second: any = seconds % 60;
-    second = second < 10 ? '0' + second : second;
-    this.time = hour + ':' + minute + ':' + second;
-    return this.time;
-    
-
-    /* const orderCreated = orderCreatedAt
-    
-    function padTo2Digits(num: any) {
-      return num.toString().padStart(2, '0');
-    } 
-    
-    window.setInterval(() => {
-      const timePassed = new Date().getTime() - parseInt(orderCreated);
-      this.seconds = Math.floor(timePassed / 1000);
-      console.log(this.seconds, 'SEGUNDOS');
-      
-      this.minutes = Math.floor( this.seconds / 60);
-      this.hours = Math.floor( this.minutes / 60);
-
-      this.seconds =  this.seconds % 60;
-      this.minutes =  this.minutes % 60;
-      this.hours =  this.hours % 24;
-      
-      if (this.seconds === 60) {
-        this.seconds = 0;
-        this.minutes++;
-        console.log('if 1');
-        
-        if ( this.minutes ===60) {
-          this.minutes = 0;
-          this.hours++;
-          console.log('if 2');
-        }
-      }
-     
-      this.hours = padTo2Digits( this.hours);
-      this.minutes = padTo2Digits( this.minutes);
-      this.seconds = padTo2Digits(this.seconds);
-      this.seconds++;
-      
-      console.log( this.seconds, 'SEGUNDOS',  this.minutes, 'MINUTOOS',  this.hours, 'HORAS');
-
-    }, 1000); */
+    this.seconds = Math.floor((new Date().getTime() - orderCreatedAt)/1000);
+    this.seconds++;
+    let hrs = Math.floor(this.seconds/3600);
+    let mins = Math.floor((this.seconds - (hrs * 3600))/60); 
+    let secs = this.seconds % 60;
+    return hrs+':'+mins+':'+secs;
   }
 }
