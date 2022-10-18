@@ -21,17 +21,7 @@ export class ContainerTicketsComponent implements OnInit {
   @ViewChild('btnDelivered') btnShowDelivered!: ElementRef;
   @ViewChild('btnStatusList') btnStatusList!: ElementRef;
 
-  constructor(private renderer2: Renderer2, private connector: ConnectionServiceService) { 
-    /* this.menu = [
-      {
-        clientName: 'Cliente',
-        totalPrice: 10,
-        statusOrder: 'Estado Orden',
-        fullOrder: [],
-        
-      }
-    ] */
-  }
+  constructor(private renderer2: Renderer2, private connector: ConnectionServiceService) { }
 
   ngOnInit(): void { 
     this.connector.getOrder().subscribe(order => { // OBTENEMOS LA ORDEN DE FIRESTORE
